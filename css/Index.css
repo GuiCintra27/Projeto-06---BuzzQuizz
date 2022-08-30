@@ -1,0 +1,326 @@
+/* FONTES */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+/* FORMATAÇÕES BASE */
+
+
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+    /* outline: 1px solid limegreen !important; */
+}
+
+html {
+    --body-background: #FAFAFA;
+    --border-color: #D4D4D4;
+    --text-color: #000000;
+    --incorrect-option: #FF4B4B;
+    --correct-option: #009C22;
+    --orange: #EC362D;
+    --blue: #434CA0;
+    --purple: #A0438D;
+    --grey: #818181;
+    --soft-grey: #B9B9B9;
+    --white: #FFFFFF;
+    font-size: 62.5%;
+}
+
+img{
+    width: 100%;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+body{
+    position: relative;
+    padding-bottom: 5rem;
+    font-family: 'Roboto', sans-serif;
+    font-size: clamp(14px, 1.6rem, 2vw);
+    background: var(--body-background);
+}
+
+.Hide{
+    display: none !important;
+}
+
+/* ELEMENTOS QUE USAM CURSOR POINTER */
+
+#Create_quiz:hover,
+#User_quiz button img:hover,
+.Quiz:hover,
+.Question ul li{
+    cursor: pointer;
+}
+
+/* CABEÇALHO */
+
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 7rem;
+    background: var(--orange);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+header h1{
+    color: var(--white);
+}
+
+/* PÁGINA INICIAL DO QUIZ */
+#Select-quiz{
+    margin-top: 7.7rem;
+}
+
+/* AREA DE QUIZ DO USUÁRIO (QUANDO VAZIA) */
+
+#User_quiz_empty{
+    height: 18rem;
+    width: 105rem;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 3.3rem;
+    border: 1px dashed var(--border-color);
+    border-radius: 5px;
+}
+
+#User_quiz_empty h4{
+    width: 22rem;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--soft-grey);
+}
+
+#Create_quiz{
+    width: 15rem;
+    height: 4rem;
+    padding: auto;
+    border: 1px dashed var(--orange);
+    border-radius: 50px;
+    color: var(--orange);
+    font-size: 21px;
+    background: transparent;
+}
+
+#Create_quiz:hover,
+#User_quiz button img:hover{
+    filter: brightness(1.75);
+}
+
+/* AREA DE QUIZ DO USUÁRIO (QUANDO PREENCHIDA) */
+
+#User_quiz{
+    font-weight: 700;
+    font-size: 20px;
+    margin-left: 19.5rem;
+    display: flex;
+    gap: 1.8rem;
+}
+
+#User_quiz button{
+    height: 3.1rem;
+    width: 3.1rem;
+    clip-path: circle(50% at 50% 50%);
+    background: var(--orange);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#User_quiz button img{
+    width: 50%;
+}
+
+/* QUIZZES */
+
+#Quizzes_title{
+    font-weight: 700;
+    font-size: 20px;
+    margin-top: 7.7rem;
+    margin-left: 19.5rem;
+}
+
+.Quiz_container{
+    width: 105rem;
+    margin-inline: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.Quiz{
+    margin-top: 1.2rem;
+    width: 34rem;
+    height: 18rem;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%);
+    background-image: url(../images/Simpsons.svg);
+    border-radius: 5px;
+    font-size: 19px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.Quiz h4{
+    max-width: 28.5rem;
+    margin-bottom: 1rem;
+    font-weight: 400;
+    color: var(--white);
+    word-break: break-word;
+}
+
+/* VERSÃO MOBILE */
+
+@media(max-width: 1100px){
+
+    #Select-quiz{
+        margin-top: 10.5rem;
+    }
+
+    #User_quiz,
+    #Quizzes_title{
+        margin-inline: auto;
+        width: 90%;
+        justify-content: space-between;
+    }
+
+    #Quizzes_title{
+        margin-top: 4rem;
+    }
+
+    .Quiz_container,
+    #User_quiz_empty{
+        width: 90%;
+        flex-direction: column;
+    }
+
+    .Quiz{
+        width: 100%;
+        height:fit-content;
+    }
+
+    .Quiz img{
+        width: 100%;
+    }
+}
+
+/* PÁGINA DE UM QUIZ */
+
+/* CAPA E TÍTULO DO QUIZ */
+
+.Quiz_title{
+    width: 100%;
+    height: 23rem;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+    background-image: url(../images/Hogwarts.svg);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Quiz_title h1{
+    color: var(--white);
+    font-size: 40px;
+    font-weight: 400;
+    max-width: 100rem;
+    word-break: break-word;
+}
+
+/* QUESTÕES DO QUIZ */
+
+.Question{
+    width: 76rem;
+    height: 68rem;
+    margin-top: 4.6rem;
+    margin-inline: auto;
+    padding: 2.4rem 3.5rem;
+    background: var(--white);
+    -webkit-box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
+    -moz-box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
+    box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.Question_title{
+    width: 100%;
+    height: 14rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Question_title h3{
+    color: var(--white);
+    max-width: 62.4rem;
+    word-break: break-word;
+    font-size: 23px;
+}
+
+.Question > ul{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+}
+
+.Question ul li{
+    list-style: none;
+    width: 33rem;
+    height: 21rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .85rem;
+}
+
+.Question ul li img{
+    width: 100%;
+}
+
+.Question ul li span{
+    max-width: 90%;
+    word-break: break-word;
+}
+
+/* CORES DOS TÍTULOS DAS QUESTÕES */
+
+#Question-1{
+    background: var(--blue);
+}
+
+#Question-2{
+    background: var(--purple);
+}
+
+/* QUESTÕES CERTAS E ERRADAS */
+
+.Correct{
+    color: var(--correct-option);
+}
+
+.Incorrect{
+    color: var(--incorrect-option);
+}
+
+/* QUESTÃO NÃO SELECIONADA */
+
+.Not_selected{
+    opacity: .3;
+}

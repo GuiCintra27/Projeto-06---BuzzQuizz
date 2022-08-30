@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/Index.css">
+
+    <title>Buzz Quizz</title>
+</head>
+<body>
+
+    <!-- CABEÇALHO -->
+    <header>
+        <h1>BuzzQuizz</h1>
+    </header>
+
+    <!-- PÁGINA INICIAL DO QUIZ -->
+    <section id="Select-quiz" class="Hide">
+
+        <!-- AREA DE QUIZ DO USUÁRIO (QUANDO VAZIA) -->
+        <div id="User_quiz_empty" class="Hide">
+            <h4>Você não criou nenhum quizz ainda :(</h4>
+            <button id="Create_quiz">Criar Quizz</button>
+        </div>
+
+        <!-- AREA DE QUIZ DO USUÁRIO (QUANDO PREENCHIDA) -->
+        <div id="User_quiz">
+            <h4>Seus Quizzes</h4>
+            <button><img src="images/Add-iconsvg.svg" alt=""></button>            
+        </div>
+
+        <div class="Quiz_container">
+            <div class="Quiz">
+                <h4>O quão Potterhead é você?</h4>
+            </div>
+
+            <div class="Quiz">
+                <h4>É ex-BBB ou ex-De férias com o Ex?</h4>
+            </div>
+        </div>
+
+        <!-- QUIZZES -->
+        <h3 id="Quizzes_title">Todos os Quizzes</h3>
+        <div class="Quiz_container">
+            <div class="Quiz">
+                <h4>Acerte os personagens corretos dos Simpsons e prove seu amor!</h4>
+            </div>
+    
+            <div class="Quiz">
+                <h4>O quanto você é de boas?</h4>
+            </div>
+    
+            <div class="Quiz" id="one">
+                <h4>Acerte os personagens corretos dos Simpsons e prove seu amor!</h4>
+            </div>
+    
+            <div class="Quiz">
+                <h4>Acerte os personagens corretos dos Simpsons e prove seu amor!</h4>
+            </div>
+    
+            <div class="Quiz">
+                <h4>O quanto você é de boas?</h4>
+            </div>
+    
+            <div class="Quiz">
+                <h4>Acerte os personagens corretos dos Simpsons e prove seu amor!</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- PÁGINA DE UM QUIZ -->
+    <section class="Quiz_page">
+
+        <!-- CAPA E TÍTULO DO QUIZ -->
+        <div class="Quiz_title">
+            <h1>O quão Potterhead é você?</h1>
+        </div>
+
+        <!-- QUESTÕES DO QUIZ -->
+
+        <div class="Question">
+            <div class="Question_title" id="Question-1">
+                <h3>Em qual animal Olho-Tonto Moody transfigurou Malfoy?</h3>
+            </div>
+
+            <ul>
+                <li class="Incorrect Not_selected">
+                    <img src="images/Gatinho.svg" alt="">
+                    <span><strong>Gatíneo</strong></span>
+                </li>
+
+                <li class="Incorrect Not_selected">
+                    <img src="images/Ratinho.svg" alt="">
+                    <span><strong>Ratata</strong></span>
+                </li>
+
+                <li class="Incorrect Not_selected">
+                    <img src="images/Sapao.svg" alt="">
+                    <span><strong>Sapo gordo</strong></span>
+                </li>
+
+                <li class="Correct">
+                    <img src="images/Furao.svg" alt="">
+                    <span><strong>Mustela putorius (o Furão)</strong></span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="Question">
+            <div class="Question_title" id="Question-2">
+                <h3>Qual dos objetos abaixo NÃO é uma horcrux?</h3>
+            </div>
+
+            <ul>
+                <li class="Incorrect">
+                    <img src="images/Harry.svg" alt="">
+                    <span><strong>The boy who lived</strong></span>
+                </li>
+
+                <li class="Correct Not_selected">
+                    <img src="images/Book.svg" alt="">
+                    <span><strong>O livro monstruoso dos monstros</strong></span>
+                </li>
+
+                <li class="Incorrect Not_selected">
+                    <img src="images/Ring.svg" alt="">
+                    <span><strong>Anel velho</strong></span>
+                </li>
+
+                <li class="Incorrect Not_selected">
+                    <img src="images/Diadem.svg" alt="">
+                    <span><strong>Diadema da Ravenclaw</strong></span>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="js/Index.js"></script>
+</body>
+
+</html>
