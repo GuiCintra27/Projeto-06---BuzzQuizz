@@ -5,7 +5,7 @@
 /* FORMATAÇÕES BASE */
 
 
-*{
+* {
     margin: 0;
     padding: 0;
     text-decoration: none;
@@ -28,16 +28,16 @@ html {
     font-size: 62.5%;
 }
 
-img{
+img {
     width: 100%;
 }
 
-a{
+a {
     text-decoration: none;
     color: black;
 }
 
-body{
+body {
     position: relative;
     padding-bottom: 5rem;
     font-family: 'Roboto', sans-serif;
@@ -45,8 +45,21 @@ body{
     background: var(--body-background);
 }
 
-.Hide{
+.Hide {
     display: none !important;
+}
+
+/* CORRIGINDO BUGS DE PALAVRA QUE QUEBRA TEXTO */
+
+p,
+span,
+strong,
+li,
+h1,
+h2,
+h3,
+h4 {
+    word-break: break-word;
 }
 
 /* ELEMENTOS QUE USAM CURSOR POINTER */
@@ -54,13 +67,15 @@ body{
 #Create_quiz:hover,
 #User_quiz button img:hover,
 .Quiz:hover,
-.Question ul li{
+.Question ul li:hover,
+.Restart:hover,
+.Go_to_home:hover {
     cursor: pointer;
 }
 
 /* CABEÇALHO */
 
-header{
+header {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -70,18 +85,18 @@ header{
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-header h1{
+header h1 {
     color: var(--white);
 }
 
 /* PÁGINA INICIAL DO QUIZ */
-#Select-quiz{
+#Select-quiz {
     margin-top: 7.7rem;
 }
 
 /* AREA DE QUIZ DO USUÁRIO (QUANDO VAZIA) */
 
-#User_quiz_empty{
+#User_quiz_empty {
     height: 18rem;
     width: 105rem;
     margin-inline: auto;
@@ -95,14 +110,14 @@ header h1{
     border-radius: 5px;
 }
 
-#User_quiz_empty h4{
+#User_quiz_empty h4 {
     width: 22rem;
     font-size: 20px;
     font-weight: 400;
     color: var(--soft-grey);
 }
 
-#Create_quiz{
+#Create_quiz {
     width: 15rem;
     height: 4rem;
     padding: auto;
@@ -114,13 +129,14 @@ header h1{
 }
 
 #Create_quiz:hover,
-#User_quiz button img:hover{
+#User_quiz button img:hover,
+.Restart:hover {
     filter: brightness(1.75);
 }
 
 /* AREA DE QUIZ DO USUÁRIO (QUANDO PREENCHIDA) */
 
-#User_quiz{
+#User_quiz {
     font-weight: 700;
     font-size: 20px;
     margin-left: 19.5rem;
@@ -128,7 +144,7 @@ header h1{
     gap: 1.8rem;
 }
 
-#User_quiz button{
+#User_quiz button {
     height: 3.1rem;
     width: 3.1rem;
     clip-path: circle(50% at 50% 50%);
@@ -139,20 +155,20 @@ header h1{
     justify-content: center;
 }
 
-#User_quiz button img{
+#User_quiz button img {
     width: 50%;
 }
 
 /* QUIZZES */
 
-#Quizzes_title{
+#Quizzes_title {
     font-weight: 700;
     font-size: 20px;
     margin-top: 7.7rem;
     margin-left: 19.5rem;
 }
 
-.Quiz_container{
+.Quiz_container {
     width: 105rem;
     margin-inline: auto;
     display: flex;
@@ -160,7 +176,7 @@ header h1{
     gap: 1.5rem;
 }
 
-.Quiz{
+.Quiz {
     margin-top: 1.2rem;
     width: 34rem;
     height: 18rem;
@@ -174,45 +190,44 @@ header h1{
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
-.Quiz h4{
+.Quiz h4 {
     max-width: 28.5rem;
     margin-bottom: 1rem;
     font-weight: 400;
     color: var(--white);
-    word-break: break-word;
 }
 
 /* VERSÃO MOBILE */
 
-@media(max-width: 1100px){
+@media(max-width: 1100px) {
 
-    #Select-quiz{
+    #Select-quiz {
         margin-top: 10.5rem;
     }
 
     #User_quiz,
-    #Quizzes_title{
+    #Quizzes_title {
         margin-inline: auto;
         width: 90%;
         justify-content: space-between;
     }
 
-    #Quizzes_title{
+    #Quizzes_title {
         margin-top: 4rem;
     }
 
     .Quiz_container,
-    #User_quiz_empty{
+    #User_quiz_empty {
         width: 90%;
         flex-direction: column;
     }
 
-    .Quiz{
+    .Quiz {
         width: 100%;
-        height:fit-content;
+        height: fit-content;
     }
 
-    .Quiz img{
+    .Quiz img {
         width: 100%;
     }
 }
@@ -221,11 +236,10 @@ header h1{
 
 /* CAPA E TÍTULO DO QUIZ */
 
-.Quiz_title{
+.Quiz_title {
     width: 100%;
     height: 23rem;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
-    background-image: url(../images/Hogwarts.svg);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../images/Hogwarts.svg);
     background-size: cover;
     background-position: center;
     display: flex;
@@ -233,22 +247,21 @@ header h1{
     justify-content: center;
 }
 
-.Quiz_title h1{
+.Quiz_title h1 {
     color: var(--white);
     font-size: 40px;
     font-weight: 400;
     max-width: 100rem;
-    word-break: break-word;
 }
 
-/* QUESTÕES DO QUIZ */
+/* QUESTÕES DO QUIZ E RESULTADO*/
 
-.Question{
+.Question,
+.Result {
     width: 76rem;
-    height: 68rem;
     margin-top: 4.6rem;
     margin-inline: auto;
-    padding: 2.4rem 3.5rem;
+    padding: 2.7rem 3.5rem 6rem 3.5rem;
     background: var(--white);
     -webkit-box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
     -moz-box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
@@ -258,29 +271,31 @@ header h1{
     gap: 2rem;
 }
 
-.Question_title{
+.Question_title,
+.Result_title {
     width: 100%;
     height: 14rem;
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
 }
 
-.Question_title h3{
+.Question_title h3,
+.Result_title h3 {
     color: var(--white);
     max-width: 62.4rem;
-    word-break: break-word;
     font-size: 23px;
 }
 
-.Question > ul{
+.Question>ul {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     gap: 3rem;
 }
 
-.Question ul li{
+.Question ul li {
     list-style: none;
     width: 33rem;
     height: 21rem;
@@ -290,37 +305,195 @@ header h1{
     gap: .85rem;
 }
 
-.Question ul li img{
+.Question ul li img {
     width: 100%;
 }
 
-.Question ul li span{
+.Question ul li span {
     max-width: 90%;
-    word-break: break-word;
 }
 
-/* CORES DOS TÍTULOS DAS QUESTÕES */
+.Result {
+    padding: 3rem 3.5rem;
+}
 
-#Question-1{
+.Result_text {
+    display: flex;
+    gap: 2.1rem;
+}
+
+.Result_text p{
+    font-size: 19px;
+}
+
+/* BOTÕES */
+
+.Buttons {
+    width: 28rem;
+    margin-inline: auto;
+    margin-top: 6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.Restart {
+    width: 26rem;
+    height: 5.2rem;
+    margin-inline: auto;
+    background: var(--orange);
+    border: none;
+    border-radius: 15px;
+    color: var(--white);
+    font-family: 'Roboto';
+    font-size: 21px;
+}
+
+.Restart:hover {
+    filter: brightness(1.25);
+}
+
+.Go_to_home {
+    width: 18rem;
+    height: 4.5rem;
+    background: none;
+    border: none;
+    font-family: 'Roboto';
+    font-size: 21px;
+    color: var(--grey);
+}
+
+.Go_to_home:hover {
+    text-decoration: underline 1.5px solid var(--grey);
+}
+
+/* CORES DOS TÍTULOS DAS QUESTÕES E RESULTADO */
+
+#Question-1 {
     background: var(--blue);
 }
 
-#Question-2{
+#Question-2 {
     background: var(--purple);
+}
+
+.Result_title {
+    background: var(--orange);
 }
 
 /* QUESTÕES CERTAS E ERRADAS */
 
-.Correct{
+.Correct {
     color: var(--correct-option);
 }
 
-.Incorrect{
+.Incorrect {
     color: var(--incorrect-option);
 }
 
 /* QUESTÃO NÃO SELECIONADA */
 
-.Not_selected{
+.Not_selected {
     opacity: .3;
+}
+
+/* VERSÃO MOBILE */
+
+@media(max-width:1100px) {
+
+    .Quiz_title {
+        height: 14.2rem;
+    }
+
+    .Quiz_title h1 {
+        font-size: 19px;
+        max-width: 31rem;
+    }
+
+    /* QUESTÕES DO QUIZ E RESULTADO*/
+
+    .Question,
+    .Result {
+        width: 100%;
+        margin-top: 2.5rem;
+        margin-inline: auto;
+        padding: 1.8rem 1.8rem 2.5rem 1.8rem;
+        gap: 1.2rem;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .Question_title,
+    .Result_title {
+        height: 9rem;
+        text-align: center;
+    }
+
+    .Question_title h3,
+    .Result_title h3 {
+        max-width: 30.8rem;
+        font-size: 19px;
+    }
+
+    .Question>ul {
+        gap: 1.2rem;
+    }
+
+    .Question ul li {
+        list-style: none;
+        width: 16.3rem;
+        height: 14rem;
+        gap: .5rem;
+    }
+
+    .Question ul li img {
+        width: 100%;
+    }
+
+    .Question ul li span {
+        max-width: 90%;
+    }
+
+    .Result {
+        padding: 1.8rem;
+    }
+
+    .Result_text {
+        display: flex;
+        flex-direction: column;
+        gap: .9rem;
+    }
+
+    .Result_text p{
+        font-size: 17px;
+    }
+
+    .Result_text img {
+        width: 100%;
+    }
+
+    /* BOTÕES */
+
+    .Buttons {
+        width: 24rem;
+        margin-top: 3.6rem;
+        gap: 1rem;
+    }
+
+    .Restart {
+        width: 22rem;
+        height: 4.5rem;
+        font-size: 18px;
+    }
+
+    .Restart:hover {
+        filter: brightness(1.25);
+    }
+
+    .Go_to_home {
+        width: 14rem;
+        height: 3.5rem;
+        font-size: 18px;
+    }
 }
