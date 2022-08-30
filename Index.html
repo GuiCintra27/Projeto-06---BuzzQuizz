@@ -23,7 +23,7 @@
         <!-- AREA DE QUIZ DO USUÁRIO (QUANDO VAZIA) -->
         <div id="User_quiz_empty" class="Hide">
             <h4>Você não criou nenhum quizz ainda :(</h4>
-            <button id="Create_quiz">Criar Quizz</button>
+            <button class="Create_quiz_btn">Criar Quizz</button>
         </div>
 
         <!-- AREA DE QUIZ DO USUÁRIO (QUANDO PREENCHIDA) -->
@@ -72,7 +72,7 @@
     </section>
 
     <!-- PÁGINA DE UM QUIZ -->
-    <section class="Quiz_page">
+    <section class="Quiz_page Hide">
 
         <!-- CAPA E TÍTULO DO QUIZ -->
         <div class="Quiz_title">
@@ -155,6 +155,208 @@
         <div class="Buttons">
             <button class="Restart">Reiniciar Quizz</button>
             <button class="Go_to_home">Voltar pra home</button>
+        </div>
+    </section>
+
+    <!-- PÁGINA DE CRIAÇÃO DE QUIZ -->
+    <section class="Create_quiz">
+
+        <!-- PRIMEIRA SEÇÃO DE PERGUNTAS -->
+        <div class="First Section Hide">
+
+            <!-- TÍTULO DA SEÇÃO -->
+            <h3>Comece pelo começo</h3>
+
+            <!-- FORMULÁRIO DE RESPOSTA -->
+            <form>
+                <input type="text" placeholder="Título do seu quizz">
+                <input type="text" placeholder="URL da imagem do seu quizz">
+                <input type="text" placeholder="Quantidade de perguntas do quizz">
+                <input type="text" placeholder="Quantidade de níveis do quizz">
+            </form>
+
+            <button class="Next_section_btn">Prosseguir pra criar perguntas</button>
+        </div>
+
+        <!-- SEGUNDA SEÇÃO DE PERGUNTAS -->
+        <div class="Second Section Hide">
+
+            <!-- TÍTULO DA SEÇÃO -->
+            <h3>Crie suas perguntas</h3>
+
+            <!-- FORMULÁRIO DE RESPOSTA -->
+            <div class="First_question">
+                <div class="Options Hide">
+                    <h3>Pergunta 1</h3>
+                    <img src="images/Pencil-icon.svg" alt="">
+                </div>
+                <form>
+    
+                    <h3>Pergunta 1</h3>
+                    <input type="text" placeholder="Texto da pergunta">
+                    <input type="text" placeholder="Cor de fundo da pergunta">
+    
+                    <h3>Resposta correta</h3>
+                    <input type="text" placeholder="Resposta correta">
+                    <input type="text" placeholder="URL da imagem">
+    
+                    <h3>Respostas incorretas</h3>
+                    <div>
+                        <input type="text" placeholder="Resposta incorreta 1">
+                        <input type="text" placeholder="URL da imagem 1">
+                    </div>
+    
+                    <div>
+                        <input type="text" placeholder="Resposta incorreta 2">
+                        <input type="text" placeholder="URL da imagem 2">
+                    </div>
+    
+                    <div>
+                        <input type="text" placeholder="Resposta incorreta 3">
+                        <input type="text" placeholder="URL da imagem 3">
+                    </div>
+                </form>
+            </div>
+
+            <div class="Second_question">
+                <div class="Options">
+                    <h3>Pergunta 2</h3>
+                    <img src="images/Pencil-icon.svg" alt="">
+                </div>
+                <form class="Hide">
+    
+                    <h3>Pergunta 2</h3>
+                    <input type="text" placeholder="Texto da pergunta">
+                    <input type="text" placeholder="Cor de fundo da pergunta">
+    
+                    <h3>Resposta correta</h3>
+                    <input type="text" placeholder="Resposta correta">
+                    <input type="text" placeholder="URL da imagem">
+    
+                    <h3>Respostas incorretas</h3>
+                    <div>
+                        <input type="text" placeholder="Resposta incorreta 1">
+                        <input type="text" placeholder="URL da imagem 1">
+                    </div>
+    
+                    <div>
+                        <input type="text" placeholder="Resposta incorreta 2">
+                        <input type="text" placeholder="URL da imagem 2">
+                    </div>
+    
+                    <div>
+                        <input type="text" placeholder="Resposta incorreta 3">
+                        <input type="text" placeholder="URL da imagem 3">
+                    </div>
+                </form>
+            </div>
+
+            <div class="Third_question">
+                <div class="Options">
+                    <h3>Pergunta 3</h3>
+                    <img src="images/Pencil-icon.svg" alt="">
+                </div>
+                <form class="Hide">
+    
+                    <h3>Pergunta 3</h3>
+                    <input type="text" placeholder="Texto da pergunta">
+                    <input type="text" placeholder="Cor de fundo da pergunta">
+    
+                    <h3>Resposta correta</h3>
+                    <input type="text" placeholder="Resposta correta">
+                    <input type="text" placeholder="URL da imagem">
+    
+                    <h3>Respostas incorretas</h3>
+                    <div>
+                        <input type="text" placeholder="Resposta incorreta 1">
+                        <input type="text" placeholder="URL da imagem 1">
+                    </div>
+    
+                    <div>
+                        <input type="text" placeholder="Resposta incorreta 2">
+                        <input type="text" placeholder="URL da imagem 2">
+                    </div>
+    
+                    <div>
+                        <input type="text" placeholder="Resposta incorreta 3">
+                        <input type="text" placeholder="URL da imagem 3">
+                    </div>
+                </form>
+            </div>
+
+            <button class="Next_section_btn">Prosseguir pra criar perguntas</button>
+        </div>
+
+        <!-- TERCEIRA SEÇÃO DE PERGUNTAS -->
+        <div class="Third Section Hide">
+
+            <!-- TÍTULO DA SEÇÃO -->
+            <h3>Agora, decida os níveis</h3>
+
+            <!-- FORMULÁRIO DE RESPOSTA -->
+            <div class="First_question">
+                <div class="Options Hide">
+                    <h3>Nível</h3>
+                    <img src="images/Pencil-icon.svg" alt="">
+                </div>
+                <form>
+                    <h3>Nível 1</h3>
+                    <input type="text" placeholder="Título do nível">
+                    <input type="text" placeholder="% de acerto mínima">
+                    <input type="text" placeholder="URL da imagem do nível">
+                    <input type="text" placeholder="Descrição do nível">
+                </form>
+            </div>
+
+            <div class="Second_question">
+                <div class="Options">
+                    <h3>Nível 2</h3>
+                    <img src="images/Pencil-icon.svg" alt="">
+                </div>
+                <form class="Hide">
+                    <h3>Nível 1</h3>
+                    <input type="text" placeholder="Título do nível">
+                    <input type="text" placeholder="% de acerto mínima">
+                    <input type="text" placeholder="URL da imagem do nível">
+                    <input type="text" placeholder="Descrição do nível">
+                </form>
+            </div>
+
+            <div class="Third_question">
+                <div class="Options">
+                    <h3>Nível 3</h3>
+                    <img src="images/Pencil-icon.svg" alt="">
+                </div>
+                <form class="Hide">
+                    <h3>Nível 1</h3>
+                    <input type="text" placeholder="Título do nível">
+                    <input type="text" placeholder="% de acerto mínima">
+                    <input type="text" placeholder="URL da imagem do nível">
+                    <input type="text" placeholder="Descrição do nível">
+                </form>
+            </div>
+
+
+            <button class="Next_section_btn">Finalizar Quizz</button>
+        </div>
+
+        <!-- PÁGINA FINAL DA SEÇÃO DE PERGUNTAS -->
+        <div class="Last Section">
+
+            <!-- TÍTULO DA SEÇÃO -->
+            <h3>Seu quizz está pronto!</h3>
+
+            <!-- PRÉ-VIZUALIZAÇÃO DO QUIZ -->
+            <div class="Show_quiz">
+                <div class="My_quiz">
+                    <h4>O quão Potterhead é você?</h4>
+                </div>
+            </div>
+
+            <div class="Buttons">
+                <button class="Last_section_btn">Acessar Quizz</button>
+                <button class="Go_to_home">Voltar pra home</button>
+            </div>
         </div>
     </section>
 
