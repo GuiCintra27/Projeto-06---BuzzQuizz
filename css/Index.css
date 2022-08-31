@@ -71,7 +71,8 @@ h4 {
 .Restart:hover,
 .Go_to_home:hover,
 .Next_section_btn:hover,
-.Options:hover {
+.Options:hover,
+.Last_section_btn:hover {
     cursor: pointer;
 }
 

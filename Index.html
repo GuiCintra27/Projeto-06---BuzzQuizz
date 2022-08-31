@@ -170,7 +170,7 @@
     <section class="Create_quiz">
 
         <!-- PRIMEIRA SEÇÃO DE PERGUNTAS -->
-        <div class="First Section Hide">
+        <div class="First Section">
 
             <!-- TÍTULO DA SEÇÃO -->
             <h3>Comece pelo começo</h3>
@@ -183,7 +183,7 @@
                 <input type="text" placeholder="Quantidade de níveis do quizz">
             </form>
 
-            <button class="Next_section_btn">Prosseguir pra criar perguntas</button>
+            <button class="Next_section_btn" onclick="nextSection(this.parentNode)">Prosseguir pra criar perguntas</button>
         </div>
 
         <!-- SEGUNDA SEÇÃO DE PERGUNTAS -->
@@ -292,7 +292,7 @@
                 </form>
             </div>
 
-            <button class="Next_section_btn">Prosseguir pra criar perguntas</button>
+            <button class="Next_section_btn" onclick="nextSection(this.parentNode)">Prosseguir pra criar perguntas</button>
         </div>
 
         <!-- TERCEIRA SEÇÃO DE PERGUNTAS -->
@@ -345,11 +345,11 @@
             </div>
 
 
-            <button class="Next_section_btn">Finalizar Quizz</button>
+            <button class="Next_section_btn" onclick="nextSection(this.parentNode)">Finalizar Quizz</button>
         </div>
 
         <!-- PÁGINA FINAL DA SEÇÃO DE PERGUNTAS -->
-        <div class="Last Section">
+        <div class="Last Section Hide">
 
             <!-- TÍTULO DA SEÇÃO -->
             <h3>Seu quizz está pronto!</h3>
@@ -362,8 +362,8 @@
             </div>
 
             <div class="Buttons">
-                <button class="Last_section_btn">Acessar Quizz</button>
-                <button class="Go_to_home">Voltar pra home</button>
+                <button class="Last_section_btn" onclick="nextSection((this.parentNode).parentNode)">Acessar Quizz</button>
+                <button class="Go_to_home" onclick="goToHome(document.getElementById('Select-quiz'), document.querySelector('.Create_quiz'))">Voltar pra home</button>
             </div>
         </div>
     </section>
