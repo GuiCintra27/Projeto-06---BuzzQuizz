@@ -1,8 +1,3 @@
-function TESTE() {
-    
-}
-
-
 function createQuiz() {
     const initialPage = document.querySelector("#Select-quiz");
     const createPage = document.querySelector(".Create_quiz");
