@@ -7,6 +7,7 @@ function createQuiz() {
     createPage.classList.remove("Hide")
     firstSection.classList.remove('Hide')
 }
+
 // Renderizando os quizzes da API
 let selectedQuiz 
 let quizzesData
@@ -44,7 +45,7 @@ function acessQuiz(quizId) {
     homePage.classList.add('Hide')
     quizPage.classList.remove('Hide')
 
-    
+
     const header = document.querySelector('header')
     header.scrollIntoView()
 }
