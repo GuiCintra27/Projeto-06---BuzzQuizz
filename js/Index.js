@@ -9,6 +9,7 @@ function createQuiz() {
 }
 
 // Renderizando os quizzes da API
+
 let selectedQuiz 
 let quizzesData
 
@@ -21,31 +22,18 @@ axios
     quizzesData = quizzes.data;
     console.log(quizzes.data) // CONSOLE.LOG
     const divs = quizzesData.map((quiz) => {
-        return `
+        return [`
         <div class="Quiz" onclick="acessQuiz(${quiz.id})">
             <h4>${quiz.title}</h4>
         </div>
-        `;
+        `, quiz.image];
     });
+    console.log(divs)
     let allQuizzes = document.querySelector('.Quiz_container');
     allQuizzes.innerHTML = ''; // Essa linha é removível depois de tirarmos os quizzes estáticos do HTML
     for(let i = 0; i < divs.length; i++) {
-        allQuizzes.innerHTML += divs[i];
+        allQuizzes.innerHTML += divs[i][0];
+        const lastDiv = allQuizzes.lastElementChild
+        lastDiv.style.backgroundImage = `url('${divs[i][1]}')`
     }
 });
-
-// Função para renderizar o quiz clicado
-function acessQuiz(quizId) {
-    selectedQuiz = quizzesData.filter((quizzesData) => {
-        if (quizzesData.id == quizId) {
-            return true
-        }
-    })
-
-    homePage.classList.add('Hide')
-    quizPage.classList.remove('Hide')
-
-
-    const header = document.querySelector('header')
-    header.scrollIntoView()
-}
