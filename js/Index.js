@@ -1,3 +1,4 @@
+// Função que leva para a aréa de criar quizzes
 function createQuiz() {
     const initialPage = document.querySelector("#Select-quiz");
     const createPage = document.querySelector(".Create_quiz");
@@ -30,7 +31,7 @@ axios
     });
     console.log(divs)
     let allQuizzes = document.querySelector('.Quiz_container');
-    allQuizzes.innerHTML = ''; // Essa linha é removível depois de tirarmos os quizzes estáticos do HTML
+
     for(let i = 0; i < divs.length; i++) {
         allQuizzes.innerHTML += divs[i][0];
         const lastDiv = allQuizzes.lastElementChild

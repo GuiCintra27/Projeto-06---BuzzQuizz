@@ -1,9 +1,9 @@
-const initialPage = document.querySelector("#Select-quiz")
-const pageQuizTwo = document.querySelector(".Quiz_page")
-
+// Função para sair da página do quiz
 function exitQuizPage () {
+    const initialPage = document.querySelector("#Select-quiz")
+    const pageQuiz = document.querySelector(".Quiz_page")
     initialPage.classList.remove('Hide')
-    pageQuizTwo.classList.add("Hide")
+    pageQuiz.classList.add("Hide")
 }
 
 // Função para renderizar o quiz clicado
