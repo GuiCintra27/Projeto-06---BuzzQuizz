@@ -21,3 +21,11 @@ function goToHome(home, section){
     section.classList.add('Hide');
     home.classList.remove('Hide');
 }
+
+function createQuiz() {
+    const initialPage = document.querySelector("#Select-quiz")
+    const createPage = document.querySelector("#section_one")
+
+    initialPage.classList.add("Hide")
+    createPage.classList.remove("Hide")
+}
