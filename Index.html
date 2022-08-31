@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://discordapp.com/channels/1005942612454293604/1014317066007892098/1014340445989519450" type="image/x-icon">
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/Index.css">
@@ -21,18 +22,18 @@
     <section id="Select-quiz" class="Hide">
 
         <!-- AREA DE QUIZ DO USUÁRIO (QUANDO VAZIA) -->
-        <div id="User_quiz_empty" class="Hide">
+        <div id="User_quiz_empty" >
             <h4>Você não criou nenhum quizz ainda :(</h4>
             <button class="Create_quiz_btn">Criar Quizz</button>
         </div>
 
         <!-- AREA DE QUIZ DO USUÁRIO (QUANDO PREENCHIDA) -->
-        <div id="User_quiz">
+        <div id="User_quiz" class="Hide">
             <h4>Seus Quizzes</h4>
             <button><img src="images/Add-iconsvg.svg" alt=""></button>            
         </div>
 
-        <div class="Quiz_container">
+        <div class="Quiz_container Hide">
             <div class="Quiz">
                 <h4>O quão Potterhead é você?</h4>
             </div>
@@ -341,7 +342,7 @@
         </div>
 
         <!-- PÁGINA FINAL DA SEÇÃO DE PERGUNTAS -->
-        <div class="Last Section">
+        <div class="Last Section Hide">
 
             <!-- TÍTULO DA SEÇÃO -->
             <h3>Seu quizz está pronto!</h3>
