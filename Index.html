@@ -30,23 +30,23 @@
     <section id="Select-quiz" class="">
 
         <!-- AREA DE QUIZ DO USUÁRIO (QUANDO VAZIA) -->
-        <div id="User_quiz_empty" >
+        <div id="User_quiz_empty" class="">
             <h4>Você não criou nenhum quizz ainda :(</h4>
             <button data-identifier="create-quizz" class="Create_quiz_btn" onclick="createQuiz()">Criar Quizz</button>
         </div>
 
         <!-- AREA DE QUIZ DO USUÁRIO (QUANDO PREENCHIDA) -->
-        <div id="User_quiz" class="Hide"> <!--COLOCAR O HIDE AQUI QUANDO TERMINAR-->
+        <div id="User_quiz" class="Hide">
             <h4>Seus Quizzes</h4>
             <button data-identifier="create-quizz" onclick="createQuiz()"><img src="images/Add-iconsvg.svg" alt=""></button>            
         </div>
 
         <div class="Quiz_container Hide">
-            <div class="Quiz">
+            <div class="Quiz" onclick="toQuizPage()">
                 <h4>O quão Potterhead é você?</h4>
             </div>
 
-            <div class="Quiz">
+            <div class="Quiz" onclick="toQuizPage()">
                 <h4>É ex-BBB ou ex-De férias com o Ex?</h4>
             </div>
         </div>
@@ -54,27 +54,27 @@
         <!-- QUIZZES -->
         <h3 id="Quizzes_title">Todos os Quizzes</h3>
         <div class="Quiz_container">
-            <div class="Quiz">
+            <div id="" class="Quiz" onclick="toQuizPage()">
                 <h4>Acerte os personagens corretos dos Simpsons e prove seu amor!</h4>
             </div>
     
-            <div class="Quiz">
+            <div id="" class="Quiz" onclick="toQuizPage()">
                 <h4>O quanto você é de boas?</h4>
             </div>
     
-            <div class="Quiz" id="one">
+            <div id="one" class="Quiz" onclick="toQuizPage()">
                 <h4>Acerte os personagens corretos dos Simpsons e prove seu amor!</h4>
             </div>
     
-            <div class="Quiz">
+            <div id="" class="Quiz" onclick="toQuizPage()">
                 <h4>Acerte os personagens corretos dos Simpsons e prove seu amor!</h4>
             </div>
     
-            <div class="Quiz">
+            <div id="" class="Quiz" onclick="toQuizPage()">
                 <h4>O quanto você é de boas?</h4>
             </div>
     
-            <div class="Quiz">
+            <div id="" class="Quiz" onclick="toQuizPage()">
                 <h4>Acerte os personagens corretos dos Simpsons e prove seu amor!</h4>
             </div>
         </div>
