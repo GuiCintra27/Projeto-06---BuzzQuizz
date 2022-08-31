@@ -554,7 +554,7 @@ header h1 {
     background: transparent;
     border: 1px solid var(--border-color);
     border-radius: 5px;
-    padding: 2.3rem 1.2rem;
+    padding: 1.3rem 1.2rem;
     font-size: 19px;
 }
 
@@ -610,4 +610,56 @@ header h1 {
     margin-bottom: 1rem;
     font-weight: 400;
     color: var(--white);
+}
+
+@media(max-width: 1100px){
+    
+/* PRIMEIRA SEÇÃO DE PERGUNTAS */
+
+.Section{
+    width: 100%;
+    margin-top: 3.8rem;
+    gap: 3rem;
+}
+
+/* TÍTULO DA SEÇÃO */
+
+.Section h3 {
+    font-size: 20px;
+}
+
+/* FORMULÁRIO DE RESPOSTA E OPÇÕES DE PERGUNTA */
+
+.Section form, 
+.Options,
+.Section > div{
+    width: 100%;
+}
+
+.Section form h3{
+    font-size: 20px;
+}
+
+.Section form div{
+    margin-bottom: 1.5rem;
+}
+
+.Section form input{
+    width: 100%;
+}
+
+/* BOTÕES */
+
+.Next_section_btn{
+    max-width: 95%;
+    margin-top: 3rem;
+    word-break: break-word;
+}
+
+/* CONFIGURAÇÕES DA TELA FINAL */
+
+.Show_quiz {
+    width: 34rem !important;
+    height: 18rem;
+}
 }
