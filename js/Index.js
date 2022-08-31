@@ -1,3 +1,12 @@
+function createQuiz() {
+    const initialPage = document.querySelector("#Select-quiz");
+    const createPage = document.querySelector(".Create_quiz");
+    const firstSection = document.querySelector('.First.Section');
+
+    initialPage.classList.add("Hide")
+    createPage.classList.remove("Hide")
+    firstSection.classList.remove('Hide')
+}
 // Renderizando os quizzes da API
 let selectedQuiz 
 let quizzesData
@@ -35,6 +44,7 @@ function acessQuiz(quizId) {
     homePage.classList.add('Hide')
     quizPage.classList.remove('Hide')
 
+    
     const header = document.querySelector('header')
     header.scrollIntoView()
 }

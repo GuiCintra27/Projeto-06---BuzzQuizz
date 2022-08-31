@@ -161,17 +161,17 @@
     <section class="Create_quiz Hide">
 
         <!-- PRIMEIRA SEÇÃO DE PERGUNTAS -->
-        <div id="section_one" class="First Section Hide">
+        <div class="First Section Hide">
 
             <!-- TÍTULO DA SEÇÃO -->
             <h3>Comece pelo começo</h3>
 
             <!-- FORMULÁRIO DE RESPOSTA -->
             <form>
-                <input type="text" placeholder="Título do seu quizz">
-                <input type="text" placeholder="URL da imagem do seu quizz">
-                <input type="text" placeholder="Quantidade de perguntas do quizz">
-                <input type="text" placeholder="Quantidade de níveis do quizz">
+                <input type="text" placeholder="Título do seu quizz (entre 20 e 65 caracteres)" data-firstSection='1'>
+                <input type="text" placeholder="URL da imagem do seu quizz" data-firstSection='2'>
+                <input type="text" placeholder="Quantidade de perguntas do quizz" data-firstSection='3'>
+                <input type="text" placeholder="Quantidade de níveis do quizz" data-firstSection='4'>
             </form>
 
             <button class="Next_section_btn" onclick="nextSection(this.parentNode)">Prosseguir pra criar perguntas</button>
@@ -192,73 +192,7 @@
                 <form>
     
                     <h3>Pergunta 1</h3>
-                    <input type="text" placeholder="Texto da pergunta">
-                    <input type="text" placeholder="Cor de fundo da pergunta">
-    
-                    <h3>Resposta correta</h3>
-                    <input type="text" placeholder="Resposta correta">
-                    <input type="text" placeholder="URL da imagem">
-    
-                    <h3>Respostas incorretas</h3>
-                    <div>
-                        <input type="text" placeholder="Resposta incorreta 1">
-                        <input type="text" placeholder="URL da imagem 1">
-                    </div>
-    
-                    <div>
-                        <input type="text" placeholder="Resposta incorreta 2">
-                        <input type="text" placeholder="URL da imagem 2">
-                    </div>
-    
-                    <div>
-                        <input type="text" placeholder="Resposta incorreta 3">
-                        <input type="text" placeholder="URL da imagem 3">
-                    </div>
-                </form>
-            </div>
-
-            <div class="Second_question">
-                <div class="Options">
-                    <h3>Pergunta 2</h3>
-                    <img src="images/Pencil-icon.svg" alt="">
-                </div>
-                <form class="Hide">
-    
-                    <h3>Pergunta 2</h3>
-                    <input type="text" placeholder="Texto da pergunta">
-                    <input type="text" placeholder="Cor de fundo da pergunta">
-    
-                    <h3>Resposta correta</h3>
-                    <input type="text" placeholder="Resposta correta">
-                    <input type="text" placeholder="URL da imagem">
-    
-                    <h3>Respostas incorretas</h3>
-                    <div>
-                        <input type="text" placeholder="Resposta incorreta 1">
-                        <input type="text" placeholder="URL da imagem 1">
-                    </div>
-    
-                    <div>
-                        <input type="text" placeholder="Resposta incorreta 2">
-                        <input type="text" placeholder="URL da imagem 2">
-                    </div>
-    
-                    <div>
-                        <input type="text" placeholder="Resposta incorreta 3">
-                        <input type="text" placeholder="URL da imagem 3">
-                    </div>
-                </form>
-            </div>
-
-            <div class="Third_question">
-                <div class="Options">
-                    <h3>Pergunta 3</h3>
-                    <img src="images/Pencil-icon.svg" alt="">
-                </div>
-                <form class="Hide">
-    
-                    <h3>Pergunta 3</h3>
-                    <input type="text" placeholder="Texto da pergunta">
+                    <input type="text" placeholder="Texto da pergunta" data-secondSection='pergunta 1'>
                     <input type="text" placeholder="Cor de fundo da pergunta">
     
                     <h3>Resposta correta</h3>
