@@ -390,7 +390,7 @@ function toggleThirdForm(form) {
 	}
 }
 
-function lastSection(section) {
+function lastSection() {
 	let quiz = {
 		title: titleQuiz,
 		image: imageQuiz,
@@ -406,7 +406,26 @@ function error(error) {
 	alert(`Ocorreu o erro de código ${error.response.status}`);
 }
 
-function sendQuiz() {
+function sendQuiz(response) {
+	let quiz = response.data;
+	console.log(quiz.id)
+
 	const lastSection = document.querySelector('.Last.Section');
 	lastSection.classList.remove('Hide');
+	const divQuiz = document.querySelector('.Show_quiz');
+	divQuiz.innerHTML = `
+        <div class="My_quiz">
+            <h4>${quiz.title}</h4>
+        </div>
+    `;
+	
+	let myQuiz = document.querySelector('.My_quiz');
+	myQuiz.style.backgroundImage = `url('${quiz.image}')`;
+
+	let buttons = document.getElementById('Create_Page__Buttons');
+
+	buttons.innerHTML = `
+	<button class="Last_section_btn" onclick="acessQuiz(${quiz.id})">Acessar Quizz</button>
+	<button class="Go_to_home" onclick="goToHome(document.getElementById('Select-quiz'), this.parentNode, document.querySelector('.Create_quiz'))">Voltar pra home</button>
+	`
 }

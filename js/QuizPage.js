@@ -19,18 +19,21 @@ function exitQuizPage () {
 let questionsQtt 
 
 function acessQuiz(quizId) {
+    let createQuestionPage = document.querySelector('.Create_quiz');
+    let createQuestionSection = document.querySelector('.Last.Section');
     filteredQuiz = quizzesData.filter((quizzesData) => {
         if (quizzesData.id == quizId) {
             return true
         }
     })
     selectedQuiz = filteredQuiz[0] 
-    console.log(selectedQuiz)
 
-    homePage.classList.add('Hide')
-    quizPage.classList.remove('Hide')
+    createQuestionPage.classList.add('Hide');
+    createQuestionSection.classList.add('Hide');
+    homePage.classList.add('Hide');
+    quizPage.classList.remove('Hide');
 
-    const quizTitle = document.querySelector('.Quiz_title')
+    const quizTitle = document.querySelector('.Quiz_title');
     quizTitle.innerHTML = `<h1>${selectedQuiz.title}</h1>`
 
     const questions = selectedQuiz.questions
