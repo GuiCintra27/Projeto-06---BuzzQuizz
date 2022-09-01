@@ -32,27 +32,18 @@
     <section id="Select-quiz" class="Hide">
 
         <!-- AREA DE QUIZ DO USUÁRIO (QUANDO VAZIA) -->
-        <div id="User_quiz_empty">
+        <div id="User_quiz_empty" class="">
             <h4>Você não criou nenhum quizz ainda :(</h4>
             <button data-identifier="create-quizz" class="Create_quiz_btn" onclick="createQuiz()">Criar Quizz</button>
         </div>
 
         <!-- AREA DE QUIZ DO USUÁRIO (QUANDO PREENCHIDA) -->
         <div id="User_quiz" class="Hide">
+
             <!--COLOCAR O HIDE AQUI QUANDO TERMINAR-->
             <h4>Seus Quizzes</h4>
             <button data-identifier="create-quizz" onclick="createQuiz()"><img src="images/Add-iconsvg.svg"
                     alt=""></button>
-        </div>
-
-        <div class="Quiz_container Hide">
-            <div class="Quiz">
-                <h4>O quão Potterhead é você?</h4>
-            </div>
-
-            <div class="Quiz">
-                <h4>É ex-BBB ou ex-De férias com o Ex?</h4>
-            </div>
         </div>
 
         <!-- QUIZZES -->
@@ -82,6 +73,7 @@
                 <h4>Acerte os personagens corretos dos Simpsons e prove seu amor!</h4>
             </div>
         </div>
+        <div class="Quiz_container"></div>
     </section>
 
     <!-- PÁGINA DE UM QUIZ -->
@@ -167,7 +159,7 @@
 
         <div class="Buttons">
             <button class="Restart">Reiniciar Quizz</button>
-            <button class="Go_to_home">Voltar pra home</button>
+            <button class="Go_to_home" onclick="exitQuizPage()">Voltar pra home</button>
         </div>
     </section>
 
