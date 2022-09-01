@@ -166,9 +166,7 @@
             <h3>Crie suas perguntas</h3>
 
             <!-- FORMULÁRIO DE RESPOSTA -->
-            <div class="Form_question">
-                
-            </div>
+            <div class="Form_question"></div>
 
             <button class="Next_section_btn" onclick="validSecondSection(this.parentNode)">
                 Prosseguir pra criar perguntas
@@ -182,9 +180,7 @@
             <h3>Agora, decida os níveis</h3>
 
             <!-- FORMULÁRIO DE RESPOSTA -->
-            <div class="Third_Form_Question">    
-    
-            </div>
+            <div class="Third_Form_Question"></div>
 
             <button class="Next_section_btn" onclick="validThirdSection(this.parentNode)">Finalizar Quizz</button>
         </div>
@@ -196,16 +192,9 @@
             <h3>Seu quizz está pronto!</h3>
 
             <!-- PRÉ-VIZUALIZAÇÃO DO QUIZ -->
-            <div class="Show_quiz">
-                <div class="My_quiz">
-                    <h4>O quão Potterhead é você?</h4>
-                </div>
-            </div>
+            <div class="Show_quiz"></div>
 
-            <div class="Buttons">
-                <button class="Last_section_btn" onclick="nextSection((this.parentNode).parentNode)">Acessar Quizz</button>
-                <button class="Go_to_home" onclick="goToHome(document.getElementById('Select-quiz'), this.parentNode, document.querySelector('.Create_quiz'))">Voltar pra home</button>
-            </div>
+            <div class="Buttons" id="Create_Page__Buttons"> </div>
         </div>
     </section>
 </body>

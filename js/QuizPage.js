@@ -23,27 +23,28 @@ function acessQuiz(quizId) {
     .get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes')
     .then((quizzes) => {
         quizzesData = quizzes.data
+        
         const filteredQuiz = quizzesData.filter((quizzesData) => {
-            if (quizzesData.id == quizId) {
-                return true
-            }
+        if (quizzesData.id == quizId) {
+            return true
+        }
         })
         selectedQuiz = filteredQuiz[0] 
         console.log(selectedQuiz)
-    
+
         homePage.classList.add('Hide')
         quizPage.classList.remove('Hide')
-    
+
         const quizTitle = document.querySelector('.Quiz_title')
         quizTitle.innerHTML = `<h1>${selectedQuiz.title}</h1>`
         quizTitle.style.background = `linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${selectedQuiz.image})`
-    
+
         const questions = selectedQuiz.questions
         questionsQtt = questions.length
-    
+
         for(let i = 0; i < questions.length; i++) {
             questions[i].answers.sort(comparator)
-    
+
             quizPage.innerHTML += `
             <div class="Question">
                 <div class="Question_title" id="Question-1">
@@ -57,7 +58,7 @@ function acessQuiz(quizId) {
             
             quizQuestions = document.querySelectorAll('ul')
             const quizzAnswers = questions[i].answers
-    
+
             for(let j = 0; j < quizzAnswers.length; j++) {
                 if (quizzAnswers[j].isCorrectAnswer === true) {
                     quizQuestions[i].innerHTML += `
@@ -76,10 +77,11 @@ function acessQuiz(quizId) {
                 }
             }
         }
-    
+
         const header = document.querySelector('header')
         header.scrollIntoView()
     })
+
 }
 
 let totalTries = 0

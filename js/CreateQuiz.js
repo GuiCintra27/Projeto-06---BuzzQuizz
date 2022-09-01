@@ -349,7 +349,7 @@ function validThirdSection(section) {
 				let cont = [];
 				for (l = 0; l < levels.length; l++) {
 					if (levels[l].minValue === 0) {
-						cont.push(l)						
+						cont.push(0);					
 					} 
 					
 					if ((cont.indexOf(0) > -1) && l === levels.length - 1) {
@@ -390,7 +390,7 @@ function toggleThirdForm(form) {
 	}
 }
 
-function lastSection(section) {
+function lastSection() {
 	let quiz = {
 		title: titleQuiz,
 		image: imageQuiz,
@@ -406,7 +406,36 @@ function error(error) {
 	alert(`Ocorreu o erro de código ${error.response.status}`);
 }
 
-function sendQuiz() {
+function sendQuiz(response) {
+	/* PEGANDO A SEÇÃO DO QUIZ DENTRO DA RESPOSTA ENVIADA PELO SERVIDOR */
+	let quiz = response.data;
+
+	/* EXIBINDO A ÚLTIMA SEÇÃO */
 	const lastSection = document.querySelector('.Last.Section');
 	lastSection.classList.remove('Hide');
+
+	/* MOSTRANDO O QUIZ */
+	const divQuiz = document.querySelector('.Show_quiz');
+	divQuiz.innerHTML = `
+        <div class="My_quiz">
+            <h4>${quiz.title}</h4>
+        </div>
+    `;
+	
+	/* COLOCANDO A IMAGEM DE FUNDO DO QUIZ */
+	let myQuiz = document.querySelector('.My_quiz');
+	myQuiz.style.backgroundImage = `url('${quiz.image}')`;
+
+	/* PEGANDO A PARTE DE BOTÕES */
+	let buttons = document.getElementById('Create_Page__Buttons');
+
+	/* ADICIONANDO OS BOTÕES */
+	buttons.innerHTML = `
+	<button class="Last_section_btn" onclick="acessQuiz(${quiz.id})">Acessar Quizz</button>
+	<button class="Go_to_home" onclick="goToHome(document.getElementById('Select-quiz'), this.parentNode, document.querySelector('.Create_quiz'))">Voltar pra home</button>
+	`
+
+	/* OBS: acessQuiz É A FUNÇÃO QUE VAI CARREGAR A PÁGINA DO QUIZ CRIADO
+	goToHome É A PARTE QUE PEDI PARA O ESDRAS TERMINAR, ESSA FUNÇÃO JÁ REDIRECIONA
+	PARA A PÁGINA INICIAL, MAS AINDA NÃO RECARREGA OS QUIZZES */
 }

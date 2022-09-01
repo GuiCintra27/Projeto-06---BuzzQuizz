@@ -33,7 +33,7 @@ axios
     const divs = quizzesData.map((quiz) => {
         return [`
         <div class="Quiz" onclick="acessQuiz(${quiz.id})">
-            <h4>${quiz.title}</h4>
+            <h4>${quiz.title}</h4>  
         </div>
         `, quiz.image];
     });
