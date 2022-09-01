@@ -40,6 +40,11 @@ function firstSection(section) {
 	const levelsResult = Number(levels) >= 2;
 	let wrong = document.querySelector('[data-firstWrong="1"]');
 
+	for (i=0; i < 4; i++){
+		wrong = document.querySelector(`[data-firstWrong="${i+1}"]`);
+		wrong.innerHTML = '';
+	}
+
 	if (titleResult && imgUrlResult && questionsResult && levelsResult) {
 
 		titleQuiz = title;
@@ -54,6 +59,7 @@ function firstSection(section) {
 	} else {
 		if (!titleResult) {		
 			Title.style.backgroundColor = '#FFE9E9';
+			wrong = document.querySelector('[data-firstWrong="1"]');
 			wrong.innerHTML	= 'O título do quiz deve ter entre 20 e 65 caracteres';
 		}
 
