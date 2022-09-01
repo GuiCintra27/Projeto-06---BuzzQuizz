@@ -349,7 +349,7 @@ function validThirdSection(section) {
 				let cont = [];
 				for (l = 0; l < levels.length; l++) {
 					if (levels[l].minValue === 0) {
-						cont.push(l)						
+						cont.push(0);					
 					} 
 					
 					if ((cont.indexOf(0) > -1) && l === levels.length - 1) {
@@ -408,7 +408,6 @@ function error(error) {
 
 function sendQuiz(response) {
 	let quiz = response.data;
-	console.log(quiz.id)
 
 	const lastSection = document.querySelector('.Last.Section');
 	lastSection.classList.remove('Hide');
