@@ -19,61 +19,67 @@ function exitQuizPage () {
 let questionsQtt 
 
 function acessQuiz(quizId) {
-    filteredQuiz = quizzesData.filter((quizzesData) => {
-        if (quizzesData.id == quizId) {
-            return true
-        }
-    })
-    selectedQuiz = filteredQuiz[0] 
-    console.log(selectedQuiz)
-
-    homePage.classList.add('Hide')
-    quizPage.classList.remove('Hide')
-
-    const quizTitle = document.querySelector('.Quiz_title')
-    quizTitle.innerHTML = `<h1>${selectedQuiz.title}</h1>`
-
-    const questions = selectedQuiz.questions
-    questionsQtt = questions.length
-
-    for(let i = 0; i < questions.length; i++) {
-        questions[i].answers.sort(comparator)
-
-        quizPage.innerHTML += `
-        <div class="Question">
-            <div class="Question_title" id="Question-1">
-                <h3>${questions[i].title}</h3>
+    axios
+    .get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes')
+    .then((quizzes) => {
+        quizzesData = quizzes.data
+        const filteredQuiz = quizzesData.filter((quizzesData) => {
+            if (quizzesData.id == quizId) {
+                return true
+            }
+        })
+        selectedQuiz = filteredQuiz[0] 
+        console.log(selectedQuiz)
+    
+        homePage.classList.add('Hide')
+        quizPage.classList.remove('Hide')
+    
+        const quizTitle = document.querySelector('.Quiz_title')
+        quizTitle.innerHTML = `<h1>${selectedQuiz.title}</h1>`
+        quizTitle.style.background = `linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${selectedQuiz.image})`
+    
+        const questions = selectedQuiz.questions
+        questionsQtt = questions.length
+    
+        for(let i = 0; i < questions.length; i++) {
+            questions[i].answers.sort(comparator)
+    
+            quizPage.innerHTML += `
+            <div class="Question">
+                <div class="Question_title" id="Question-1">
+                    <h3>${questions[i].title}</h3>
+                </div>
+                <ul></ul>
             </div>
-            <ul></ul>
-        </div>
-        `
-        const questionTitle = document.querySelectorAll('.Question_title')
-        questionTitle[i].style.background = `${questions[i].color}`
-        
-        quizQuestions = document.querySelectorAll('ul')
-        const quizzAnswers = questions[i].answers
-
-        for(let j = 0; j < quizzAnswers.length; j++) {
-            if (quizzAnswers[j].isCorrectAnswer === true) {
-                quizQuestions[i].innerHTML += `
-                <li class="correct" onclick="tryAnswer(this)">
-                    <img src="${quizzAnswers[j].image}" alt="">
-                    <span><strong>${quizzAnswers[j].text}</strong></span>
-                </li>
-                `
-            } else {
-                quizQuestions[i].innerHTML += `
-                <li class="wrong" onclick="tryAnswer(this)">
-                    <img src="${quizzAnswers[j].image}" alt="">
-                    <span><strong>${quizzAnswers[j].text}</strong></span>
-                </li>
-                `
+            `
+            const questionTitle = document.querySelectorAll('.Question_title')
+            questionTitle[i].style.background = `${questions[i].color}`
+            
+            quizQuestions = document.querySelectorAll('ul')
+            const quizzAnswers = questions[i].answers
+    
+            for(let j = 0; j < quizzAnswers.length; j++) {
+                if (quizzAnswers[j].isCorrectAnswer === true) {
+                    quizQuestions[i].innerHTML += `
+                    <li class="correct" onclick="tryAnswer(this)">
+                        <img src="${quizzAnswers[j].image}" alt="">
+                        <span><strong>${quizzAnswers[j].text}</strong></span>
+                    </li>
+                    `
+                } else {
+                    quizQuestions[i].innerHTML += `
+                    <li class="wrong" onclick="tryAnswer(this)">
+                        <img src="${quizzAnswers[j].image}" alt="">
+                        <span><strong>${quizzAnswers[j].text}</strong></span>
+                    </li>
+                    `
+                }
             }
         }
-    }
-
-    const header = document.querySelector('header')
-    header.scrollIntoView()
+    
+        const header = document.querySelector('header')
+        header.scrollIntoView()
+    })
 }
 
 let totalTries = 0
@@ -110,6 +116,12 @@ function tryAnswer(esse) {
             break
         }
     }
+
+    if(questionsQtt === 0) {
+        const score = Math.round((correctAnswer/totalTries)*100)
+        console.log(score)
+    }
+
     
     setTimeout(() => {
         questionBox.parentNode.nextElementSibling.scrollIntoView()
