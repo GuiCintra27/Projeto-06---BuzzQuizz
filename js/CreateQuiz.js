@@ -1,76 +1,8 @@
 const urlServer = 'https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes';
 let amountOfQuestions = 0, amountOfLevels = 0, cont = 0, filterAnswerResult = [];
-let quiz = {
-	title: "Título do quizz",
-	image: "https://http.cat/411.jpg",
-	questions: [
-		{
-			title: "Título da pergunta 1",
-			color: "#123456",
-			answers: [
-				{
-					text: "Texto da resposta 1",
-					image: "https://http.cat/411.jpg",
-					isCorrectAnswer: true
-				},
-				{
-					text: "Texto da resposta 2",
-					image: "https://http.cat/412.jpg",
-					isCorrectAnswer: false
-				}
-			]
-		},
-		{
-			title: "Título da pergunta 2",
-			color: "#123456",
-			answers: [
-				{
-					text: "Texto da resposta 1",
-					image: "https://http.cat/411.jpg",
-					isCorrectAnswer: true
-				},
-				{
-					text: "Texto da resposta 2",
-					image: "https://http.cat/412.jpg",
-					isCorrectAnswer: false
-				}
-			]
-		},
-		{
-			title: "Título da pergunta 3",
-			color: "#123456",
-			answers: [
-				{
-					text: "Texto da resposta 1",
-					image: "https://http.cat/411.jpg",
-					isCorrectAnswer: true
-				},
-				{
-					text: "Texto da resposta 2",
-					image: "https://http.cat/412.jpg",
-					isCorrectAnswer: false
-				}
-			]
-		}
-	],
-	levels: [
-		{
-			title: "Título do nível 1",
-			image: "https://http.cat/411.jpg",
-			text: "Descrição do nível 1",
-			minValue: 0
-		},
-		{
-			title: "Título do nível 2",
-			image: "https://http.cat/412.jpg",
-			text: "Descrição do nível 2",
-			minValue: 50
-		}
-	]
-};
+let titleQuiz = '', imageQuiz = '', questionsQuiz = [], levelsQuiz = '';
 
 function nextSection(section) {
-
 	if (section.className.includes('First')) {
 		firstSection(section);
 	} else if (section.className.includes('Second')) {
@@ -82,8 +14,9 @@ function nextSection(section) {
 	}
 }
 
-function goToHome(home, section) {
+function goToHome(home, sectionOfSection, section) {
 	section.classList.add('Hide');
+	sectionOfSection.classList.add('Hide');
 	home.classList.remove('Hide');
 }
 
@@ -105,8 +38,8 @@ function firstSection(section) {
 
 	if (titleResult && imgUrlResult && questionsResult && levelsResult) {
 
-		quiz.title = title;
-		quiz.image = imgUrl;
+		titleQuiz = title;
+		imageQuiz = imgUrl;
 		amountOfQuestions = questions;
 		amountOfLevels = levels;
 
@@ -249,7 +182,7 @@ function validSecondSection(section) {
 
 		filterAnswers(question)
 		i = cont;
-		if (filterAnswerResult[0].text === '' || (filterAnswerResult[1].text === '' && filterAnswerResult[2].text === '' && filterAnswerResult[3].text === '')) {
+		if (filterAnswerResult[0].text === '') {
 			answerResult = false;
 		} else {
 			answerResult = filterAnswerResult[0].text.length > 0 && (filterAnswerResult[1].text.length > 0 || filterAnswerResult[2].text.length > 0 || filterAnswerResult[3].text.length > 0);
@@ -260,7 +193,7 @@ function validSecondSection(section) {
 			questions.push(question);
 
 			if (questions.length === amountOfQuestions) {
-				quiz.questions = questions;
+				questionsQuiz = questions;
 				section.classList.add('Hide');
 				const thirdSection = document.querySelector('.Third.Section');
 				thirdSection.classList.remove('Hide');
@@ -286,7 +219,7 @@ function validSecondSection(section) {
 function filterAnswers(question) {
 	let mark = 0;
 	for (l = 0; l < question.answers.length; l++) {
-		let answer = question.answers[l].text.length > 20 && question.answers[l].image.includes('https://');
+		let answer = question.answers[l].text.length > 0 && question.answers[l].image.includes('https://');
 
 		if (l === 0 && answer) {
 			mark = 1;
@@ -300,18 +233,20 @@ function filterAnswers(question) {
 
 			if (l === question.answers.length - 1) {
 				for (k = 0; k < question.answers.length; k++) {
-					if (k === 0) {
+					if (k === 0 && question.answers[k].text !== '') {
 						filterAnswerResult.push({
 							text: question.answers[k].text,
 							image: question.answers[k].image,
 							isCorrectAnswer: true
 						});
-					} else {
+					} else if(question.answers[k].text !== '') {
 						filterAnswerResult.push({
 							text: question.answers[k].text,
 							image: question.answers[k].image,
 							isCorrectAnswer: false
 						});
+					}else if (k === question.answers.length -1 && filterAnswerResult.length < 2) {
+						alert(`Os seguintes dados não foram preenchidos corretamente: Perguntas`)
 					}
 
 				}
@@ -411,17 +346,20 @@ function validThirdSection(section) {
 			levels.push(level);
 
 			if (levels.length === amountOfLevels) {
+				let cont = [];
 				for (l = 0; l < levels.length; l++) {
 					if (levels[l].minValue === 0) {
-						quiz.levels = levels;
+						cont.push(l)						
+					} 
+					
+					if ((cont.indexOf(0) > -1) && l === levels.length - 1) {
+						levelsQuiz = levels;
 						section.classList.add('Hide');
 						const lastSection = document.querySelector('.Last.Section');
-						lastSection.classList.remove('Hide');
 						nextSection(lastSection);
-					} else if (l === levels.length - 1) {
+					}else if (l === levels.length - 1) {
 						alert('Pelo menos um nível deve ter porcentagem 0');
 					}
-
 				}
 			}
 		} else {
@@ -452,10 +390,23 @@ function toggleThirdForm(form) {
 	}
 }
 
-function lastSection(section){
-	console.log(quiz)
-	/* const thisPage = document.querySelector('.Create_quiz');
-	thisPage.classList.add('Hide');
-	const quizPage = document.querySelector('.Quiz_page');
-	quizPage.classList.remove('Hide'); */
+function lastSection(section) {
+	let quiz = {
+		title: titleQuiz,
+		image: imageQuiz,
+		questions: questionsQuiz,
+		levels: levelsQuiz
+	};
+	const quizServer = axios.post(urlServer, quiz);
+	quizServer.then(sendQuiz);
+	quizServer.catch(error);
+}
+
+function error(error) {
+	alert(`Ocorreu o erro de código ${error.response.status}`);
+}
+
+function sendQuiz() {
+	const lastSection = document.querySelector('.Last.Section');
+	lastSection.classList.remove('Hide');
 }

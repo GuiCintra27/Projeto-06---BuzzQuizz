@@ -14,11 +14,9 @@ const quizEx = {title: "esdrinhas", nome: "esdras"}
 
 let createdQuizString = JSON.stringify(quizEx) //Dentro do JSON vai a variável com a resposta em objeto que o servidor dá quando o quiz é criado ou então id (depende)
 localStorage.setItem("quiz", createdQuizString) // Armazenando a string/id (depende) do objeto
-console.log(createdQuizString)
 
 let quizLocalStorage = localStorage.getItem("quiz") // Pegando de volta a variável em forma de string
 let quizDesestringado = JSON.parse(quizLocalStorage) // Transformando a string em objeto/id (depende) de novo
-console.log(quizDesestringado)
 
 // Renderizando os quizzes gerais da API
 
