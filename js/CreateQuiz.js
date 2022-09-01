@@ -78,10 +78,7 @@ function nextSection(section) {
 	} else if (section.className.includes('Third')) {
 		thirdSection(section);
 	} else if (section.className.includes('Last')) {
-		const thisPage = document.querySelector('.Create_quiz');
-		thisPage.classList.add('Hide');
-		const quizPage = document.querySelector('.Quiz_page');
-		quizPage.classList.remove('Hide');
+		lastSection(section);
 	}
 }
 
@@ -114,7 +111,7 @@ function firstSection(section) {
 		amountOfLevels = levels;
 
 		section.classList.add('Hide');
-		const secondSection = document.querySelector('.Third.Section');
+		const secondSection = document.querySelector('.Second.Section');
 		secondSection.classList.remove('Hide');
 		nextSection(secondSection);
 	} else {
@@ -345,6 +342,120 @@ function toggleForm(form) {
 	}
 }
 
-function thirdSection(section){
-	
+function thirdSection() {
+	let form = document.querySelector('.Third_Form_Question');
+
+	for (i = 0; i < amountOfLevels; i++) {
+		if (i === 0) {
+			let firstQuestion = `            
+			<div>
+				<div data-third-form="${i + 1}" class="Options Hide" onclick="toggleThirdForm(this)">
+					<h3>Nível ${i + 1}</h3>
+					<img src="images/Pencil-icon.svg" alt="">
+				</div>
+				<form data-third-form="${i + 1}">
+					<h3 onclick="toggleThirdForm(this.parentNode)">Nível ${i + 1}</h3>
+					<input type="text" placeholder="Título do nível" data-thirdSection="titulo ${i + 1}">
+					<input type="text" placeholder="% de acerto mínima" data-thirdSection="porcentagem ${i + 1}">
+					<input type="text" placeholder="URL da imagem do nível" data-thirdSection="imagem ${i + 1}">
+					<input type="text" placeholder="Descrição do nível" data-thirdSection="descricao ${i + 1}">
+				</form>
+			</div>
+	`;
+			form.innerHTML += firstQuestion;
+		} else {
+			let secondQuestion = `
+			<div">
+				<div data-third-form="${i + 1}" class="Options" onclick="toggleThirdForm(this)">
+					<h3>Nível ${i + 1}</h3>
+					<img src="images/Pencil-icon.svg" alt="">
+				</div>
+				<form data-third-form="${i + 1}" class="Hide">
+					<h3 onclick="toggleThirdForm(this.parentNode)">Nível ${i + 1}</h3>
+					<input type="text" placeholder="Título do nível" data-thirdSection="titulo ${i + 1}">
+					<input type="text" placeholder="% de acerto mínima" data-thirdSection="porcentagem ${i + 1}">
+					<input type="text" placeholder="URL da imagem do nível" data-thirdSection="imagem ${i + 1}">
+					<input type="text" placeholder="Descrição do nível" data-thirdSection="descricao ${i + 1}">
+				</form>
+			</div>
+	`;
+			form.innerHTML += secondQuestion;
+		}
+	}
+}
+
+function validThirdSection(section) {
+	let levels = [];
+	for (i = 0; i < amountOfLevels; i++) {
+
+		let level = {
+			title: document.querySelector(`[data-thirdSection='titulo ${i + 1}']`).value,
+			image: document.querySelector(`[data-thirdSection='imagem ${i + 1}']`).value,
+			text: document.querySelector(`[data-thirdSection='descricao ${i + 1}']`).value,
+			minValue: document.querySelector(`[data-thirdSection='porcentagem ${i + 1}']`).value
+		};
+
+		if (level.minValue) {
+			level.minValue = Number(level.minValue);
+		} else {
+			level.minValue = -1;
+		}
+
+		let titleResult = level.title.length >= 10;
+		let minValueResult = level.minValue >= 0 && level.minValue <= 100;
+		let imageResult = level.image.includes('https://');
+		let textResult = level.text.length >= 30;
+		let problem = [];
+
+		if (titleResult && minValueResult && imageResult && textResult) {
+			levels.push(level);
+
+			if (levels.length === amountOfLevels) {
+				for (l = 0; l < levels.length; l++) {
+					if (levels[l].minValue === 0) {
+						quiz.levels = levels;
+						section.classList.add('Hide');
+						const lastSection = document.querySelector('.Last.Section');
+						lastSection.classList.remove('Hide');
+						nextSection(lastSection);
+					} else if (l === levels.length - 1) {
+						alert('Pelo menos um nível deve ter porcentagem 0');
+					}
+
+				}
+			}
+		} else {
+			if (!titleResult) {
+				problem.push(`Título do nível ${i + 1}`);
+			}
+			if (!minValueResult) {
+				problem.push(`Porcentagem do nível ${i + 1}`);
+			}
+			if (!imageResult) {
+				problem.push(`Url da imagem do nível ${i + 1}`);
+			}
+			if (!textResult) {
+				problem.push(`Descrição do nível ${i + 1}`);
+			}
+			alert(`Os seguintes dados não foram preenchidos corretamente: ${problem.join(', ')}`)
+		}
+	}
+}
+
+function toggleThirdForm(form) {
+	let data = form.dataset.thirdForm;
+	let show = document.querySelectorAll(`[data-third-form="${data}"]`);
+
+	for (i = 0; i < show.length; i++) {
+		let option = show[i];
+		option.classList.toggle('Hide');
+	}
+}
+
+function lastSection(section){
+	console.log(quiz)
+	/* const thisPage = document.querySelector('.Create_quiz');
+	thisPage.classList.add('Hide');
+	const quizPage = document.querySelector('.Quiz_page');
+	quizPage.classList.remove('Hide'); */
 }

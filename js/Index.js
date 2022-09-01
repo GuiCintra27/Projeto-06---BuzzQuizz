@@ -21,7 +21,6 @@ axios
 .get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes')
 .then((quizzes) => {
     quizzesData = quizzes.data;
-    console.log(quizzes.data) // CONSOLE.LOG
     const divs = quizzesData.map((quiz) => {
         return [`
         <div class="Quiz" onclick="acessQuiz(${quiz.id})">
@@ -29,7 +28,7 @@ axios
         </div>
         `, quiz.image];
     });
-    console.log(divs)
+
     let allQuizzes = document.querySelector('.Quiz_container');
 
     for(let i = 0; i < divs.length; i++) {

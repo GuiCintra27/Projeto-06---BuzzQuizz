@@ -207,50 +207,11 @@
             <h3>Agora, decida os níveis</h3>
 
             <!-- FORMULÁRIO DE RESPOSTA -->
-            <div class="First_question">
-                <div class="Options Hide">
-                    <h3>Nível</h3>
-                    <img src="images/Pencil-icon.svg" alt="">
-                </div>
-                <form>
-                    <h3>Nível 1</h3>
-                    <input type="text" placeholder="Título do nível">
-                    <input type="text" placeholder="% de acerto mínima">
-                    <input type="text" placeholder="URL da imagem do nível">
-                    <input type="text" placeholder="Descrição do nível">
-                </form>
+            <div class="Third_Form_Question">    
+    
             </div>
 
-            <div class="Second_question">
-                <div class="Options">
-                    <h3>Nível 2</h3>
-                    <img src="images/Pencil-icon.svg" alt="">
-                </div>
-                <form class="Hide">
-                    <h3>Nível 1</h3>
-                    <input type="text" placeholder="Título do nível">
-                    <input type="text" placeholder="% de acerto mínima">
-                    <input type="text" placeholder="URL da imagem do nível">
-                    <input type="text" placeholder="Descrição do nível">
-                </form>
-            </div>
-
-            <div class="Third_question">
-                <div class="Options">
-                    <h3>Nível 3</h3>
-                    <img src="images/Pencil-icon.svg" alt="">
-                </div>
-                <form class="Hide">
-                    <h3>Nível 1</h3>
-                    <input type="text" placeholder="Título do nível">
-                    <input type="text" placeholder="% de acerto mínima">
-                    <input type="text" placeholder="URL da imagem do nível">
-                    <input type="text" placeholder="Descrição do nível">
-                </form>
-            </div>
-
-
-            <button class="Next_section_btn" onclick="nextSection(this.parentNode)">Finalizar Quizz</button>
+            <button class="Next_section_btn" onclick="validThirdSection(this.parentNode)">Finalizar Quizz</button>
         </div>
 
         <!-- PÁGINA FINAL DA SEÇÃO DE PERGUNTAS -->
@@ -267,11 +228,8 @@
             </div>
 
             <div class="Buttons">
-                <button class="Last_section_btn" onclick="nextSection((this.parentNode).parentNode)">Acessar
-                    Quizz</button>
-                <button class="Go_to_home"
-                    onclick="goToHome(document.getElementById('Select-quiz'), document.querySelector('.Create_quiz'))">Voltar
-                    pra home</button>
+                <button class="Last_section_btn" onclick="nextSection((this.parentNode).parentNode)">Acessar Quizz</button>
+                <button class="Go_to_home" onclick="goToHome(document.getElementById('Select-quiz'), document.querySelector('.Create_quiz'))">Voltar pra home</button>
             </div>
         </div>
     </section>
