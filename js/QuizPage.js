@@ -18,6 +18,7 @@ function exitQuizPage () {
 
 let questionsQtt 
 
+
 function acessQuiz(quizId) {
     axios
     .get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes')
@@ -31,9 +32,15 @@ function acessQuiz(quizId) {
         })
         selectedQuiz = filteredQuiz[0] 
         console.log(selectedQuiz)
-
+        
         homePage.classList.add('Hide')
         quizPage.classList.remove('Hide')
+
+        quizPage.innerHTML = `
+        <div class="Quiz_title">
+            <h1>O quão Potterhead é você?</h1>
+        </div>
+        `
 
         const quizTitle = document.querySelector('.Quiz_title')
         quizTitle.innerHTML = `<h1>${selectedQuiz.title}</h1>`
@@ -122,8 +129,38 @@ function tryAnswer(esse) {
     if(questionsQtt === 0) {
         const score = Math.round((correctAnswer/totalTries)*100)
         console.log(score)
-    }
+        console.log(selectedQuiz)
 
+        for(let i = selectedQuiz.levels.length - 1; i > -1; i--) {
+            if (score >= selectedQuiz.levels[i].minValue) {
+                quizPage.innerHTML += `
+                <div class="Result">
+                    <div class="Result_title">
+                        <h3>${score}% de acerto: ${selectedQuiz.levels[i].title}</h3>
+                    </div>
+        
+                    <div class="Result_text">
+                        <img class="resultImg" src="${selectedQuiz.levels[i].image}" alt="">
+                        <p><strong>${selectedQuiz.levels[i].text}</strong></p>
+                    </div>
+                </div>
+                <div class="Buttons">
+                    <button class="Restart" onclick="acessQuiz(selectedQuiz.id)">Reiniciar Quizz</button>
+                    <button class="Go_to_home" onclick="location.reload()">Voltar pra home</button>
+                </div>
+                `
+                const result = document.querySelector('.Result')
+                function scrollDown() {
+                    result.scrollIntoView()
+                }
+                setTimeout(scrollDown, 2000)
+
+                totalTries = 0
+                correctAnswer = 0
+                break
+            }
+        }
+    }
     
     setTimeout(() => {
         questionBox.parentNode.nextElementSibling.scrollIntoView()

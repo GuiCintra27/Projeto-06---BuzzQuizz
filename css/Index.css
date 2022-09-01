@@ -668,3 +668,8 @@ header h1 {
     height: 18rem;
 }
 }
+
+.resultImg {
+    width: 365px;
+    height: 275px;
+}
