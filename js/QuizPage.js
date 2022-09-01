@@ -17,9 +17,11 @@ function exitQuizPage () {
 // Função para renderizar o quiz clicado
 
 let questionsQtt 
-let createPage = document.querySelector('.Create_quiz');
+const createPage = document.querySelector('.Create_quiz');
+const body = document.querySelector('body')
 
 function acessQuiz(quizId) {
+    body.scrollIntoView()
     axios
     .get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes')
     .then((quizzes) => {
