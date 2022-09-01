@@ -17,7 +17,7 @@ function exitQuizPage () {
 // Função para renderizar o quiz clicado
 
 let questionsQtt 
-
+let createPage = document.querySelector('.Create_quiz');
 
 function acessQuiz(quizId) {
     axios
@@ -34,6 +34,7 @@ function acessQuiz(quizId) {
         console.log(selectedQuiz)
         
         homePage.classList.add('Hide')
+        createPage.classList.add('Hide');
         quizPage.classList.remove('Hide')
 
         quizPage.innerHTML = `
