@@ -72,7 +72,8 @@ h4 {
 .Go_to_home:hover,
 .Next_section_btn:hover,
 .Options:hover,
-.Last_section_btn:hover {
+.Last_section_btn:hover,
+.Section h3:first-child:hover {
     cursor: pointer;
 }
 
@@ -510,7 +511,7 @@ header h1 {
 
 .Section{
     width: 62rem;
-    margin-top: 7rem;
+    margin-top: 4rem;
     margin-inline: auto;
     display: flex;
     flex-direction: column;
@@ -530,6 +531,7 @@ header h1 {
 .Section form, 
 .Options{
     width: 60rem;
+    margin-top: 3rem;
     background: var(--white);
     padding: 2.3rem 1.8rem;
     display: flex;
