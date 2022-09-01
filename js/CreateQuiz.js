@@ -15,9 +15,7 @@ function nextSection(section) {
 }
 
 function goToHome(home, sectionOfSection, section) {
-	section.classList.add('Hide');
-	sectionOfSection.classList.add('Hide');
-	home.classList.remove('Hide');
+	window.location.reload();
 }
 
 function firstSection(section) {
