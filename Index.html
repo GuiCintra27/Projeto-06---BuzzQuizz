@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- Ícone da aba -->
     <link rel="shortcut icon" href="images/unknown.png" type="image/x-icon">
 
@@ -19,6 +20,7 @@
 
     <title>Buzz Quizz</title>
 </head>
+
 <body>
 
     <!-- CABEÇALHO -->
@@ -30,22 +32,24 @@
     <section id="Select-quiz" class="">
 
         <!-- AREA DE QUIZ DO USUÁRIO (QUANDO VAZIA) -->
-        <div id="User_quiz_empty" >
+        <div id="User_quiz_empty" class="">
             <h4>Você não criou nenhum quizz ainda :(</h4>
             <button data-identifier="create-quizz" class="Create_quiz_btn" onclick="createQuiz()">Criar Quizz</button>
         </div>
 
         <!-- AREA DE QUIZ DO USUÁRIO (QUANDO PREENCHIDA) -->
-        <div id="User_quiz" class="Hide"> <!--COLOCAR O HIDE AQUI QUANDO TERMINAR-->
+        <div id="User_quiz" class="Hide">
+
+            <!--COLOCAR O HIDE AQUI QUANDO TERMINAR-->
             <h4>Seus Quizzes</h4>
-            <button data-identifier="create-quizz" onclick="createQuiz()"><img src="images/Add-iconsvg.svg" alt=""></button>            
+            <button data-identifier="create-quizz" onclick="createQuiz()"><img src="images/Add-iconsvg.svg"
+                    alt=""></button>
         </div>
 
         <!-- QUIZZES -->
         <h3 id="Quizzes_title">Todos os Quizzes</h3>
-        <div class="Quiz_container">
-
-        </div>
+        <div class="Quiz_container"></div>
+        <div class="Quiz_container"></div>
     </section>
 
     <!-- PÁGINA DE UM QUIZ -->
@@ -122,16 +126,16 @@
             <div class="Result_text">
                 <img src="images/Dumbledore.svg" alt="">
                 <p><strong>
-                    Parabéns Potterhead! Bem-vindx a Hogwarts, aproveite o loop 
-                    infinito de comida e clique no botão abaixo para usar o 
-                    vira-tempo e reiniciar este teste.
-                </strong></p>
+                        Parabéns Potterhead! Bem-vindx a Hogwarts, aproveite o loop
+                        infinito de comida e clique no botão abaixo para usar o
+                        vira-tempo e reiniciar este teste.
+                    </strong></p>
             </div>
         </div>
 
         <div class="Buttons">
             <button class="Restart">Reiniciar Quizz</button>
-            <button class="Go_to_home">Voltar pra home</button>
+            <button class="Go_to_home" onclick="exitQuizPage()">Voltar pra home</button>
         </div>
     </section>
 
@@ -139,7 +143,7 @@
     <section class="Create_quiz Hide">
 
         <!-- PRIMEIRA SEÇÃO DE PERGUNTAS -->
-        <div class="First Section Hide">
+        <div class="First Section">
 
             <!-- TÍTULO DA SEÇÃO -->
             <h3>Comece pelo começo</h3>
@@ -148,11 +152,12 @@
             <form>
                 <input type="text" placeholder="Título do seu quizz (entre 20 e 65 caracteres)" data-firstSection='1'>
                 <input type="text" placeholder="URL da imagem do seu quizz" data-firstSection='2'>
-                <input type="text" placeholder="Quantidade de perguntas do quizz" data-firstSection='3'>
-                <input type="text" placeholder="Quantidade de níveis do quizz" data-firstSection='4'>
+                <input type="text" placeholder="Quantidade de perguntas do quizz (pelo menos 3)" data-firstSection='3'>
+                <input type="text" placeholder="Quantidade de níveis do quizz (pelo menos 2)" data-firstSection='4'>
             </form>
 
-            <button class="Next_section_btn" onclick="nextSection(this.parentNode)">Prosseguir pra criar perguntas</button>
+            <button class="Next_section_btn" onclick="nextSection(this.parentNode)">Prosseguir pra criar
+                perguntas</button>
         </div>
 
         <!-- SEGUNDA SEÇÃO DE PERGUNTAS -->
@@ -162,40 +167,13 @@
             <h3>Crie suas perguntas</h3>
 
             <!-- FORMULÁRIO DE RESPOSTA -->
-            <div class="First_question">
-                <div class="Options Hide">
-                    <h3>Pergunta 1</h3>
-                    <img src="images/Pencil-icon.svg" alt="">
-                </div>
-                <form>
-    
-                    <h3>Pergunta 1</h3>
-                    <input type="text" placeholder="Texto da pergunta" data-secondSection='pergunta 1'>
-                    <input type="text" placeholder="Cor de fundo da pergunta">
-    
-                    <h3>Resposta correta</h3>
-                    <input type="text" placeholder="Resposta correta">
-                    <input type="text" placeholder="URL da imagem">
-    
-                    <h3>Respostas incorretas</h3>
-                    <div>
-                        <input type="text" placeholder="Resposta incorreta 1">
-                        <input type="text" placeholder="URL da imagem 1">
-                    </div>
-    
-                    <div>
-                        <input type="text" placeholder="Resposta incorreta 2">
-                        <input type="text" placeholder="URL da imagem 2">
-                    </div>
-    
-                    <div>
-                        <input type="text" placeholder="Resposta incorreta 3">
-                        <input type="text" placeholder="URL da imagem 3">
-                    </div>
-                </form>
+            <div class="Form_question">
+                
             </div>
 
-            <button class="Next_section_btn" onclick="nextSection(this.parentNode)">Prosseguir pra criar perguntas</button>
+            <button class="Next_section_btn" onclick="validSecondSection(this.parentNode)">
+                Prosseguir pra criar perguntas
+            </button>
         </div>
 
         <!-- TERCEIRA SEÇÃO DE PERGUNTAS -->
@@ -205,50 +183,11 @@
             <h3>Agora, decida os níveis</h3>
 
             <!-- FORMULÁRIO DE RESPOSTA -->
-            <div class="First_question">
-                <div class="Options Hide">
-                    <h3>Nível</h3>
-                    <img src="images/Pencil-icon.svg" alt="">
-                </div>
-                <form>
-                    <h3>Nível 1</h3>
-                    <input type="text" placeholder="Título do nível">
-                    <input type="text" placeholder="% de acerto mínima">
-                    <input type="text" placeholder="URL da imagem do nível">
-                    <input type="text" placeholder="Descrição do nível">
-                </form>
+            <div class="Third_Form_Question">    
+    
             </div>
 
-            <div class="Second_question">
-                <div class="Options">
-                    <h3>Nível 2</h3>
-                    <img src="images/Pencil-icon.svg" alt="">
-                </div>
-                <form class="Hide">
-                    <h3>Nível 1</h3>
-                    <input type="text" placeholder="Título do nível">
-                    <input type="text" placeholder="% de acerto mínima">
-                    <input type="text" placeholder="URL da imagem do nível">
-                    <input type="text" placeholder="Descrição do nível">
-                </form>
-            </div>
-
-            <div class="Third_question">
-                <div class="Options">
-                    <h3>Nível 3</h3>
-                    <img src="images/Pencil-icon.svg" alt="">
-                </div>
-                <form class="Hide">
-                    <h3>Nível 1</h3>
-                    <input type="text" placeholder="Título do nível">
-                    <input type="text" placeholder="% de acerto mínima">
-                    <input type="text" placeholder="URL da imagem do nível">
-                    <input type="text" placeholder="Descrição do nível">
-                </form>
-            </div>
-
-
-            <button class="Next_section_btn" onclick="nextSection(this.parentNode)">Finalizar Quizz</button>
+            <button class="Next_section_btn" onclick="validThirdSection(this.parentNode)">Finalizar Quizz</button>
         </div>
 
         <!-- PÁGINA FINAL DA SEÇÃO DE PERGUNTAS -->
