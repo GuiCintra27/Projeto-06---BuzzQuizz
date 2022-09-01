@@ -2,8 +2,12 @@
 function exitQuizPage () {
     const initialPage = document.querySelector("#Select-quiz")
     const pageQuiz = document.querySelector(".Quiz_page")
+    
     initialPage.classList.remove('Hide')
     pageQuiz.classList.add("Hide")
+
+    const header = document.querySelector('header')
+    header.scrollIntoView()
 }
 
 // Função para renderizar o quiz clicado
