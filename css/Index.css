@@ -39,6 +39,7 @@ a {
 
 body {
     position: relative;
+    padding-top: 7rem;
     padding-bottom: 5rem;
     font-family: 'Roboto', sans-serif;
     font-size: clamp(14px, 1.6rem, 2vw);
@@ -80,6 +81,9 @@ h4 {
 /* CABEÇALHO */
 
 header {
+    position: fixed;
+    top: 0;
+    z-index: 10;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -229,7 +233,6 @@ header h1 {
 
     .Quiz {
         width: 100%;
-        height: fit-content;
     }
 
     .Quiz img {
@@ -667,4 +670,13 @@ header h1 {
     width: 34rem !important;
     height: 18rem;
 }
+}
+
+/* BÔNUS */
+
+.Wrong{
+    color: var(--orange);
+    font-size: 16px;
+    width: 100%;
+    word-break: break-word;
 }

@@ -14,25 +14,31 @@ function nextSection(section) {
 	}
 }
 
-function goToHome(home, sectionOfSection, section) {
+function goToHome() {
 	window.location.reload();
 }
 
 function firstSection(section) {
-	const title = document.querySelector("[data-firstSection='1']").value;
-	const imgUrl = document.querySelector("[data-firstSection='2']").value;
-	let questions = document.querySelector("[data-firstSection='3']").value;
-	let levels = document.querySelector("[data-firstSection='4']").value;
+	const Title = document.querySelector("[data-firstSection='1']");
+	const ImgUrl = document.querySelector("[data-firstSection='2']");
+	const Questions = document.querySelector("[data-firstSection='3']");
+	const Levels = document.querySelector("[data-firstSection='4']");
 
-	questions = Number(questions);
-	levels = Number(levels);
+	Title.style.backgroundColor = 'transparent';
+	ImgUrl.style.backgroundColor = 'transparent';
+	Questions.style.backgroundColor = 'transparent';
+	Levels.style.backgroundColor = 'transparent';
 
+	const title = Title.value;
+	const imgUrl = ImgUrl.value;
+	const questions = Questions.value;
+	const levels = Levels.value;
 
-	const titleResult = title.length > 20 && title.length < 61;
+	const titleResult = title.length > 20 && title.length < 65;
 	const imgUrlResult = imgUrl.includes('https://');
-	const questionsResult = questions >= 3;
-	const levelsResult = levels >= 2;
-	let problem = [];
+	const questionsResult = Number(questions) >= 3;
+	const levelsResult = Number(levels) >= 2;
+	let wrong = document.querySelector('[data-firstWrong="1"]');
 
 	if (titleResult && imgUrlResult && questionsResult && levelsResult) {
 
@@ -46,22 +52,28 @@ function firstSection(section) {
 		secondSection.classList.remove('Hide');
 		nextSection(secondSection);
 	} else {
-		if (!titleResult) {
-			problem.push(`Título do quiz`);
+		if (!titleResult) {		
+			Title.style.backgroundColor = '#FFE9E9';
+			wrong.innerHTML	= 'O título do quiz deve ter entre 20 e 65 caracteres';
 		}
 
 		if (!imgUrlResult) {
-			problem.push(`Url da imagem`);
+			ImgUrl.style.backgroundColor = '#FFE9E9';
+			wrong = document.querySelector('[data-firstWrong="2"]');
+			wrong.innerHTML	= 'O valor informado não é uma URL válida';
 		}
 
 		if (!questionsResult) {
-			problem.push(`Quantidade das questões`);
+			Questions.style.backgroundColor = '#FFE9E9';
+			wrong = document.querySelector('[data-firstWrong="3"]');
+			wrong.innerHTML	= 'O quizz deve ter no mínimo 3 perguntas';
 		}
 
 		if (!levelsResult) {
-			problem.push(`Quantidade dos níveis`);
+			Levels.style.backgroundColor = '#FFE9E9';
+			wrong = document.querySelector('[data-firstWrong="4"]');
+			wrong.innerHTML	= 'O quizz deve ter no mínimo 2 níveis';
 		}
-		alert(`Os seguintes dados não foram preenchidos corretamente: ${problem.join(', ')}`)
 	}
 }
 
@@ -430,7 +442,7 @@ function sendQuiz(response) {
 	/* ADICIONANDO OS BOTÕES */
 	buttons.innerHTML = `
 	<button class="Last_section_btn" onclick="acessQuiz(${quiz.id})">Acessar Quizz</button>
-	<button class="Go_to_home" onclick="goToHome(document.getElementById('Select-quiz'), this.parentNode, document.querySelector('.Create_quiz'))">Voltar pra home</button>
+	<button class="Go_to_home" onclick="goToHome()">Voltar pra home</button>
 	`
 
 	/* OBS: acessQuiz É A FUNÇÃO QUE VAI CARREGAR A PÁGINA DO QUIZ CRIADO
