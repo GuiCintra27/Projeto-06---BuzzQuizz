@@ -15,6 +15,9 @@ function exitQuizPage () {
 }
 
 // Função para renderizar o quiz clicado
+
+let questionsQtt 
+
 function acessQuiz(quizId) {
     filteredQuiz = quizzesData.filter((quizzesData) => {
         if (quizzesData.id == quizId) {
@@ -31,6 +34,7 @@ function acessQuiz(quizId) {
     quizTitle.innerHTML = `<h1>${selectedQuiz.title}</h1>`
 
     const questions = selectedQuiz.questions
+    questionsQtt = questions.length
 
     for(let i = 0; i < questions.length; i++) {
         questions[i].answers.sort(comparator)
@@ -71,8 +75,43 @@ function acessQuiz(quizId) {
     const header = document.querySelector('header')
     header.scrollIntoView()
 }
+
 let totalTries = 0
 let correctAnswer = 0
+
 function tryAnswer(esse) {
+    const questionBox = esse.parentNode
+    let nextQuestion = questionBox.firstElementChild
+    if (nextQuestion.classList.contains('Not_selected') || nextQuestion.nextElementSibling.classList.contains('Not_selected')) {
+        console.log('NAO')
+        return
+    }
+
+    questionsQtt--
+    totalTries++
+    if (esse.classList.contains('correct')) {
+        correctAnswer++
+    }
     console.log(esse)
+    esse.classList.add('current')
+
+    while (true) {
+        if(!nextQuestion.classList.contains('current')) {
+            nextQuestion.classList.add('Not_selected')
+        }
+        if(nextQuestion.classList.contains('correct')) {
+            nextQuestion.classList.add('Correct')
+        } else {
+            nextQuestion.classList.add('Incorrect')
+        }
+        if (nextQuestion.nextElementSibling) {
+            nextQuestion = nextQuestion.nextElementSibling
+        } else {
+            break
+        }
+    }
+    
+    setTimeout(() => {
+        questionBox.parentNode.nextElementSibling.scrollIntoView()
+    }, 2000)
 }
