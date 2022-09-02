@@ -49,16 +49,16 @@ axios
     const divs = quizzesData.map((quiz) => {
         return [`
         <div class="Quiz" onclick="acessQuiz(${quiz.id})">
-            <h4>${quiz.title}</h4>
+            <img src="${quiz.image}" alt="">
+            <span></span>
+            <h4>${quiz.title}</h4>  
         </div>
-        `, quiz.image];
+        `];
     });
 
     let allQuizzes = document.querySelector('.Quiz_container');
 
     for(let i = 0; i < divs.length; i++) {
         allQuizzes.innerHTML += divs[i][0];
-        const lastDiv = allQuizzes.lastElementChild
-        lastDiv.style.backgroundImage = `url('${divs[i][1]}')`
-    }
+}
 });

@@ -158,9 +158,16 @@
             <!-- FORMULÁRIO DE RESPOSTA -->
             <form>
                 <input type="text" placeholder="Título do seu quizz (entre 20 e 65 caracteres)" data-firstSection='1'>
+                <div class="Wrong" data-firstWrong="1"></div>
+
                 <input type="text" placeholder="URL da imagem do seu quizz" data-firstSection='2'>
+                <div class="Wrong" data-firstWrong="2"></div>
+
                 <input type="text" placeholder="Quantidade de perguntas do quizz (pelo menos 3)" data-firstSection='3'>
+                <div class="Wrong" data-firstWrong="3"></div>
+                
                 <input type="text" placeholder="Quantidade de níveis do quizz (pelo menos 2)" data-firstSection='4'>
+                <div class="Wrong" data-firstWrong="4"></div>
             </form>
 
             <button class="Next_section_btn" onclick="nextSection(this.parentNode)">Prosseguir pra criar

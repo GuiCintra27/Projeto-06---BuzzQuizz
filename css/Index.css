@@ -39,6 +39,7 @@ a {
 
 body {
     position: relative;
+    padding-top: 7rem;
     padding-bottom: 5rem;
     font-family: 'Roboto', sans-serif;
     font-size: clamp(14px, 1.6rem, 2vw);
@@ -80,6 +81,9 @@ h4 {
 /* CABEÇALHO */
 
 header {
+    position: fixed;
+    top: 0;
+    z-index: 10;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -202,12 +206,10 @@ header h1 {
 }
 
 .Quiz {
+    position: relative;
     margin-top: 1.2rem;
     width: 34rem;
     height: 18rem;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%);
-    background-size: cover;
-    background-repeat: no-repeat;
     border-radius: 5px;
     font-size: 19px;
     display: flex;
@@ -217,10 +219,26 @@ header h1 {
 }
 
 .Quiz h4 {
+    position: absolute;
+    bottom: 0;
     max-width: 28.5rem;
     margin-bottom: 1rem;
     font-weight: 400;
     color: var(--white);
+}
+
+.Quiz img {
+    width: 34rem;
+    height: 18rem;
+    
+}
+
+.Quiz span{
+    position: absolute;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%);
 }
 
 /* VERSÃO MOBILE */
@@ -254,7 +272,6 @@ header h1 {
 
     .Quiz {
         width: 100%;
-        height: fit-content;
     }
 
     .Quiz img {
@@ -328,7 +345,7 @@ header h1 {
 .Question ul li {
     list-style: none;
     width: 33rem;
-    height: 21rem;
+    height: 23rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -342,6 +359,8 @@ header h1 {
 
 .Question ul li span {
     max-width: 90%;
+    height: 100%;
+    overflow-y: scroll;
 }
 
 .Result {
@@ -692,4 +711,17 @@ header h1 {
     width: 34rem !important;
     height: 18rem;
 }
+}
+/* BÔNUS */
+
+.Wrong{
+    color: var(--orange);
+    font-size: 16px;
+    width: 100%;
+    word-break: break-word;
+}
+
+.resultImg {
+    width: 365px;
+    height: 275px;
 }
