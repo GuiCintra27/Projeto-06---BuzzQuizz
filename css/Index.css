@@ -230,10 +230,12 @@ header h1 {
 .Quiz img {
     width: 34rem;
     height: 18rem;
+    border-radius: 5px;
 }
 
 .Quiz span{
     position: absolute;
+    border-radius: 5px;
     bottom: 0;
     height: 100%;
     width: 100%;
