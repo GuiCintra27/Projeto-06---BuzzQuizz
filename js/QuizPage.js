@@ -2,18 +2,6 @@ function comparator() {
     return Math.random() - 0.5; 
 }
 
-// Função para sair da página do quiz
-function exitQuizPage () {
-    const initialPage = document.querySelector("#Select-quiz")
-    const pageQuiz = document.querySelector(".Quiz_page")
-    
-    initialPage.classList.remove('Hide')
-    pageQuiz.classList.add("Hide")
-
-    const header = document.querySelector('header')
-    header.scrollIntoView()
-}
-
 // Função para renderizar o quiz clicado
 
 let questionsQtt 
@@ -59,7 +47,7 @@ function acessQuiz(quizId) {
             questions[i].answers.sort(comparator)
 
             quizPage.innerHTML += `
-            <div class="Question">
+            <div class="Question" data-identifier="question">
                 <div class="Question_title" id="Question-1">
                     <h3>${questions[i].title}</h3>
                 </div>
@@ -75,14 +63,14 @@ function acessQuiz(quizId) {
             for(let j = 0; j < quizzAnswers.length; j++) {
                 if (quizzAnswers[j].isCorrectAnswer === true) {
                     quizQuestions[i].innerHTML += `
-                    <li class="correct" onclick="tryAnswer(this)">
+                    <li class="correct" onclick="tryAnswer(this)" data-identifier="answer">
                         <img src="${quizzAnswers[j].image}" alt="">
                         <span><strong>${quizzAnswers[j].text}</strong></span>
                     </li>
                     `
                 } else {
                     quizQuestions[i].innerHTML += `
-                    <li class="wrong" onclick="tryAnswer(this)">
+                    <li class="wrong" onclick="tryAnswer(this)" data-identifier="answer">
                         <img src="${quizzAnswers[j].image}" alt="">
                         <span><strong>${quizzAnswers[j].text}</strong></span>
                     </li>
@@ -140,7 +128,7 @@ function tryAnswer(esse) {
         for(let i = selectedQuiz.levels.length - 1; i > -1; i--) {
             if (score >= selectedQuiz.levels[i].minValue) {
                 quizPage.innerHTML += `
-                <div class="Result">
+                <div class="Result" data-identifier="quizz-result">
                     <div class="Result_title">
                         <h3>${score}% de acerto: ${selectedQuiz.levels[i].title}</h3>
                     </div>
