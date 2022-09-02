@@ -9,30 +9,37 @@ function createQuiz() {
     firstSection.classList.remove('Hide')
 }
 
+
 // Renderizar quizzes do usuário do localStorage
 function userQuizRender () {
 
-//Pegando os quizzes do usuário no localStorage
-let arrayLocalStorage = localStorage.getItem("quizzesUser") // Pegando de volta a variável em forma de string
-let quizzesUserArray = JSON.parse(arrayLocalStorage) // Transformando a string em array de novo
+    //Pegando os quizzes do usuário no localStorage
+    let arrayLocalStorage = localStorage.getItem("quizzesUser") // Pegando de volta a variável em forma de string
+    let quizzesUserArray = JSON.parse(arrayLocalStorage) // Transformando a string em array de novo
 
     const userQuizContainer = document.querySelector(".user_quiz_container")
 
-    if (userQuizContainer.childElementCount !== 0) {
-        userQuizContainer.innerHTML = ''
+    if (quizzesUserArray !== null) {
+        if (userQuizContainer.childElementCount !== 0) {
+
+
+            userQuizContainer.innerHTML = ''
+        }
+
+        quizzesUserArray.forEach (userQuiz => {
+            const div = 
+                `<div data-identifier="quizz-card" class="Quiz" onclick="acessQuiz(${userQuiz.id})">
+                    <img src="${userQuiz.image}" alt="">
+                    <span></span>
+                    <h4>${userQuiz.title}</h4>
+                </div>`
+
+            userQuizContainer.innerHTML += div
+            })
+            
+        document.querySelector("#User_quiz").classList.remove("Hide")
+        document.querySelector("#User_quiz_empty").classList.add("Hide")
     }
-
-    quizzesUserArray.forEach (userQuiz => {
-        const div = 
-            `<div data-identifier="quizz-card" class="Quiz" onclick="acessQuiz(${userQuiz.id})">
-                <h4>${userQuiz.title}</h4>
-            </div>`
-
-        userQuizContainer.innerHTML += div
-
-            const lastDiv = userQuizContainer.lastElementChild
-            lastDiv.style.backgroundImage = `url('${userQuiz.image}')`
-        })
 }
 
 // Renderizando os quizzes gerais da API
@@ -62,3 +69,7 @@ axios
         allQuizzes.innerHTML += divs[i][0];
 }
 });
+
+
+//<====================>
+userQuizRender()
