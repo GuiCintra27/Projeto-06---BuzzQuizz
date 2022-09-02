@@ -249,7 +249,7 @@ header h1 {
     }
 
     #Select-quiz {
-        margin-top: 10.5rem;
+        margin-top: 7.7rem;
     }
 
     #User_quiz,
@@ -257,6 +257,10 @@ header h1 {
         margin-inline: auto;
         width: 90%;
         justify-content: space-between;
+    }
+
+    .Question ul {
+        justify-content: space-around;
     }
 
     #Quizzes_title {
