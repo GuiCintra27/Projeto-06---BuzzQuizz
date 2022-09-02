@@ -89,11 +89,11 @@ function secondSection() {
 	for (i = 0; i < amountOfQuestions; i++) {
 		if (i === 0) {
 			let firstQuestion = `            
-		<div class="Options Hide" data-identifier="expand" data-form="${i + 1}" onclick="toggleForm(this)">
+		<div class="Options Hide" data-form="${i + 1}" onclick="toggleForm(this)">
 			<h3>Pergunta 1</h3>
 			<img src="images/Pencil-icon.svg" alt="">
 		</div>
-		<form data-identifier="question-form" data-form="${i + 1}">
+		<form data-form="${i + 1}">
 
 			<h3 onclick="toggleForm(this.parentNode)">Pergunta 1</h3>
 			<input type="text" placeholder="Texto da pergunta" data-secondSection='pergunta ${i + 1}'>
@@ -123,11 +123,11 @@ function secondSection() {
 			form.innerHTML += firstQuestion;
 		} else {
 			let secondQuestion = `
-		<div class="Options" data-identifier="expand" data-form="${i + 1}" onclick="toggleForm(this)">
+		<div class="Options" data-form="${i + 1}" onclick="toggleForm(this)">
 			<h3>Pergunta ${i + 1}</h3>
 			<img src="images/Pencil-icon.svg" alt="">
 		</div>
-		<form class="Hide" data-identifier="question-form" data-form="${i + 1}">
+		<form class="Hide" data-form="${i + 1}">
 
 			<h3 onclick="toggleForm(this.parentNode)" >Pergunta ${i + 1}</h3>
 			<input type="text" placeholder="Texto da pergunta" data-secondSection='pergunta ${i + 1}'>
@@ -302,11 +302,11 @@ function thirdSection() {
 		if (i === 0) {
 			let firstQuestion = `            
 			<div>
-				<div data-identifier="expand" data-third-form="${i + 1}" class="Options Hide" onclick="toggleThirdForm(this)">
+				<div data-third-form="${i + 1}" class="Options Hide" onclick="toggleThirdForm(this)">
 					<h3>Nível ${i + 1}</h3>
 					<img src="images/Pencil-icon.svg" alt="">
 				</div>
-				<form data-identifier="level" data-third-form="${i + 1}">
+				<form data-third-form="${i + 1}">
 					<h3 onclick="toggleThirdForm(this.parentNode)">Nível ${i + 1}</h3>
 					<input type="text" placeholder="Título do nível" data-thirdSection="titulo ${i + 1}">
 					<input type="text" placeholder="% de acerto mínima" data-thirdSection="porcentagem ${i + 1}">
@@ -319,11 +319,11 @@ function thirdSection() {
 		} else {
 			let secondQuestion = `
 			<div">
-				<div data-identifier="expand" data-third-form="${i + 1}" class="Options" onclick="toggleThirdForm(this)">
+				<div data-third-form="${i + 1}" class="Options" onclick="toggleThirdForm(this)">
 					<h3>Nível ${i + 1}</h3>
 					<img src="images/Pencil-icon.svg" alt="">
 				</div>
-				<form data-identifier="level" data-third-form="${i + 1}" class="Hide">
+				<form data-third-form="${i + 1}" class="Hide">
 					<h3 onclick="toggleThirdForm(this.parentNode)">Nível ${i + 1}</h3>
 					<input type="text" placeholder="Título do nível" data-thirdSection="titulo ${i + 1}">
 					<input type="text" placeholder="% de acerto mínima" data-thirdSection="porcentagem ${i + 1}">
@@ -427,29 +427,31 @@ function error(error) {
 
 let userQuizArray = [] // Array que vai guardar os quizzes no localStorage
 let stringedArray = JSON.stringify(userQuizArray) // Dentro do JSON vai a variável com a array vazia
-localStorage.setItem("emptyArray", stringedArray) // Armazenando a string da array
-
-let arrayQuizzes = localStorage.getItem("quizzesUser") // Pegando de volta a primeira array em forma de string
-let quizzesUserArray = JSON.parse(arrayQuizzes) // Transformando a string em array de novo
+localStorage.setItem("array", stringedArray) // Armazenando a string da array
 
 function sendQuiz(response) {
-	let quiz = response.data;
-
-	let arrayLocalStorage = localStorage.getItem("emptyArray") // Pegando de volta a array vazia em forma de string
+	let arrayLocalStorage = localStorage.getItem("array") // Pegando de volta a array vazia em forma de string
 	let quizzesArray = JSON.parse(arrayLocalStorage) // Transformando a string em array de novo
 
-	quizzesArray.push(quiz)
+	let arrayQuizzes = localStorage.getItem("quizzesUser") // Pegando de volta a primeira array em forma de string
+	let quizzesUserArray = JSON.parse(arrayQuizzes) // Transformando a string em array de novo
 
-	let stringedArrayOne = JSON.stringify(quizzesArray) // Dentro do JSON vai a variável da array com o quiz
-	localStorage.setItem("quizzesUser", stringedArrayOne) // Armazenando a string da array (daqui vai pro index.js)
+	if(quizzesArray === []) {
+		let quiz = response.data;
+		
+		quizzesArray.push(quiz)
 
-	if (quizzesUserArray !== null) {
-		quizzesUserArray.push(quiz)
-	
+		let stringedArrayOne = JSON.stringify(quizzesArray) // Dentro do JSON vai a variável da array com o quiz
+		localStorage.setItem("quizzesUser", stringedArrayOne) // Armazenando a string da array (daqui vai pro index.js)
+	}
+
+	if (quizzesUserArray !== [] && quizzesUserArray !== undefined) {
+		quizzesUserArray.push(response.data)
+
 		let stringedArray = JSON.stringify(quizzesUserArray) // Dentro do JSON vai a variável com a array de objetos
 		localStorage.setItem("quizzesUser", stringedArray) // Armazenando a string da array (daqui vai pro index.js)
 	}
-		
+
 	/* EXIBINDO A ÚLTIMA SEÇÃO */
 	const lastSection = document.querySelector('.Last.Section');
 	lastSection.classList.remove('Hide');
@@ -458,7 +460,6 @@ function sendQuiz(response) {
 	const divQuiz = document.querySelector('.Show_quiz');
 	divQuiz.innerHTML = `
         <div class="My_quiz">
-			<span></span>
             <h4>${quiz.title}</h4>
         </div>
     `;
@@ -479,4 +480,5 @@ function sendQuiz(response) {
 	/* OBS: acessQuiz É A FUNÇÃO QUE VAI CARREGAR A PÁGINA DO QUIZ CRIADO
 	goToHome É A PARTE QUE PEDI PARA O ESDRAS TERMINAR, ESSA FUNÇÃO JÁ REDIRECIONA
 	PARA A PÁGINA INICIAL, MAS AINDA NÃO RECARREGA OS QUIZZES */
+	userQuizRender()
 }
