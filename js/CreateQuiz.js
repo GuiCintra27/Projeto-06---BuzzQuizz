@@ -424,9 +424,33 @@ function error(error) {
 	alert(`Ocorreu o erro de código ${error.response.status}`);
 }
 
+
+let userQuizArray = [] // Array que vai guardar os quizzes no localStorage
+let stringedArray = JSON.stringify(userQuizArray) // Dentro do JSON vai a variável com a array vazia
+localStorage.setItem("array", stringedArray) // Armazenando a string da array
+
 function sendQuiz(response) {
-	/* PEGANDO A SEÇÃO DO QUIZ DENTRO DA RESPOSTA ENVIADA PELO SERVIDOR */
-	let quiz = response.data;
+	let arrayLocalStorage = localStorage.getItem("array") // Pegando de volta a array vazia em forma de string
+	let quizzesArray = JSON.parse(arrayLocalStorage) // Transformando a string em array de novo
+
+	let arrayQuizzes = localStorage.getItem("quizzesUser") // Pegando de volta a primeira array em forma de string
+	let quizzesUserArray = JSON.parse(arrayQuizzes) // Transformando a string em array de novo
+
+	if(quizzesArray === []) {
+		let quiz = response.data;
+		
+		quizzesArray.push(quiz)
+
+		let stringedArrayOne = JSON.stringify(quizzesArray) // Dentro do JSON vai a variável da array com o quiz
+		localStorage.setItem("quizzesUser", stringedArrayOne) // Armazenando a string da array (daqui vai pro index.js)
+	}
+
+	if (quizzesUserArray !== [] && quizzesUserArray !== undefined) {
+		quizzesUserArray.push(response.data)
+
+		let stringedArray = JSON.stringify(quizzesUserArray) // Dentro do JSON vai a variável com a array de objetos
+		localStorage.setItem("quizzesUser", stringedArray) // Armazenando a string da array (daqui vai pro index.js)
+	}
 
 	/* EXIBINDO A ÚLTIMA SEÇÃO */
 	const lastSection = document.querySelector('.Last.Section');
@@ -456,4 +480,5 @@ function sendQuiz(response) {
 	/* OBS: acessQuiz É A FUNÇÃO QUE VAI CARREGAR A PÁGINA DO QUIZ CRIADO
 	goToHome É A PARTE QUE PEDI PARA O ESDRAS TERMINAR, ESSA FUNÇÃO JÁ REDIRECIONA
 	PARA A PÁGINA INICIAL, MAS AINDA NÃO RECARREGA OS QUIZZES */
+	userQuizRender()
 }

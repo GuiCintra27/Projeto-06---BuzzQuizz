@@ -41,27 +41,26 @@
         <div id="User_quiz" class="Hide">
 
             <!--COLOCAR O HIDE AQUI QUANDO TERMINAR-->
-            <h4>Seus Quizzes</h4>
-            <button data-identifier="create-quizz" onclick="createQuiz()"><img src="images/Add-iconsvg.svg" alt=""></button>
+            <div class="user_quiz_title">
+                <h4>Seus Quizzes</h4>
+                <button data-identifier="create-quizz" onclick="createQuiz()"><img src="images/Add-iconsvg.svg" alt=""></button>
+            </div>
+            
+            <div data-identifier="user-quizzes" class="user_quiz_container">
+            </div>
         </div>
 
         <!-- QUIZZES -->
-        <h3 id="Quizzes_title">Todos os Quizzes</h3>
+        <div class="quiz_title">
+            <h3 id="Quizzes_title">Todos os Quizzes</h3>
+        </div>
+        
+        <div data-identifier="general-quizzes" class="Quiz_container"></div>
 
-        <div class="Quiz_container"></div>
     </section>
 
     <!-- PÁGINA DE UM QUIZ -->
-    <section class="Quiz_page Hide">
-
-        <!-- CAPA E TÍTULO DO QUIZ -->
-
-        <!-- QUESTÕES DO QUIZ -->
-        <div class="Buttons">
-            <button class="Restart">Reiniciar Quizz</button>
-            <button class="Go_to_home" onclick="exitQuizPage()">Voltar pra home</button>
-        </div>
-    </section>
+    <section class="Quiz_page Hide"></section>
 
     <!-- PÁGINA DE CRIAÇÃO DE QUIZ -->
     <section class="Create_quiz Hide">
