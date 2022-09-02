@@ -209,9 +209,6 @@ function validSecondSection(section) {
 			question.answers = filterAnswerResult;
 			questions.push(question);
 			
-			alert(questions.length)
-			alert(amountOfQuestions)
-			alert(questions.length === amountOfQuestions)
 			if (questions.length === amountOfQuestions) {
 				alert('oi dnv')
 				questionsQuiz = questions;
