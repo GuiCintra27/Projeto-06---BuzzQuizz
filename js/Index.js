@@ -24,7 +24,7 @@ let quizzesUserArray = JSON.parse(arrayLocalStorage) // Transformando a string e
 
     quizzesUserArray.forEach (userQuiz => {
         const div = 
-            `<div class="Quiz" onclick="acessQuiz(${userQuiz.id})">
+            `<div data-identifier="quizz-card" class="Quiz" onclick="acessQuiz(${userQuiz.id})">
                 <h4>${userQuiz.title}</h4>
             </div>`
 
@@ -48,7 +48,7 @@ axios
     quizzesData = quizzes.data;
     const divs = quizzesData.map((quiz) => {
         return [`
-        <div class="Quiz" onclick="acessQuiz(${quiz.id})">
+        <div data-identifier="quizz-card" class="Quiz" onclick="acessQuiz(${quiz.id})">
             <img src="${quiz.image}" alt="">
             <span></span>
             <h4>${quiz.title}</h4>  
