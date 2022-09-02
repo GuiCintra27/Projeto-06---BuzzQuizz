@@ -143,13 +143,29 @@ header h1 {
 }
 
 /* AREA DE QUIZ DO USUÁRIO (QUANDO PREENCHIDA) */
+.user_quiz_title {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+}
+
+.user_quiz_container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    width: 100%;
+}
 
 #User_quiz {
     font-weight: 700;
     font-size: 20px;
     margin-left: 19.5rem;
     display: flex;
-    gap: 1.8rem;
+    flex-direction: column;
+    width: 105rem;
+    margin-inline: auto;
+    flex-wrap: wrap;
+    gap: 1.5rem;
 }
 
 #User_quiz button {
@@ -168,12 +184,17 @@ header h1 {
 }
 
 /* QUIZZES */
+.quiz_title {
+    width: 105rem;
+    margin-top: 7.7rem;
+    margin-bottom: 12px;
+    margin-inline: auto;
+}
 
 #Quizzes_title {
+    width: 20%;
     font-weight: 700;
     font-size: 20px;
-    margin-top: 7.7rem;
-    margin-left: 19.5rem;
 }
 
 .Quiz_container {
@@ -222,6 +243,10 @@ header h1 {
 /* VERSÃO MOBILE */
 
 @media(max-width: 1100px) {
+
+    .quiz_title {
+        width: auto;
+    }
 
     #Select-quiz {
         margin-top: 10.5rem;

@@ -9,17 +9,33 @@ function createQuiz() {
     firstSection.classList.remove('Hide')
 }
 
-//Guardando os quizzes do usuário no localStorage
-const quizEx = {title: "esdrinhas", nome: "esdras"}
+// Renderizar quizzes do usuário do localStorage
+function userQuizRender () {
 
-let createdQuizString = JSON.stringify(quizEx) //Dentro do JSON vai a variável com a resposta em objeto que o servidor dá quando o quiz é criado ou então id (depende)
-localStorage.setItem("quiz", createdQuizString) // Armazenando a string/id (depende) do objeto
+//Pegando os quizzes do usuário no localStorage
+let arrayLocalStorage = localStorage.getItem("quizzesUser") // Pegando de volta a variável em forma de string
+let quizzesUserArray = JSON.parse(arrayLocalStorage) // Transformando a string em array de novo
 
-let quizLocalStorage = localStorage.getItem("quiz") // Pegando de volta a variável em forma de string
-let quizDesestringado = JSON.parse(quizLocalStorage) // Transformando a string em objeto/id (depende) de novo
+    const userQuizContainer = document.querySelector(".user_quiz_container")
+
+    if (userQuizContainer.childElementCount !== 0) {
+        userQuizContainer.innerHTML = ''
+    }
+
+    quizzesUserArray.forEach (userQuiz => {
+        const div = 
+            `<div data-identifier="quizz-card" class="Quiz" onclick="acessQuiz(${userQuiz.id})">
+                <h4>${userQuiz.title}</h4>
+            </div>`
+
+        userQuizContainer.innerHTML += div
+
+            const lastDiv = userQuizContainer.lastElementChild
+            lastDiv.style.backgroundImage = `url('${userQuiz.image}')`
+        })
+}
 
 // Renderizando os quizzes gerais da API
-
 let selectedQuiz 
 let quizzesData
 
@@ -32,7 +48,7 @@ axios
     quizzesData = quizzes.data;
     const divs = quizzesData.map((quiz) => {
         return [`
-        <div class="Quiz" onclick="acessQuiz(${quiz.id})">
+        <div data-identifier="quizz-card" class="Quiz" onclick="acessQuiz(${quiz.id})">
             <img src="${quiz.image}" alt="">
             <span></span>
             <h4>${quiz.title}</h4>  
