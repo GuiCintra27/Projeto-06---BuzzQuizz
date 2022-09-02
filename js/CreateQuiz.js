@@ -49,8 +49,8 @@ function firstSection(section) {
 
 		titleQuiz = title;
 		imageQuiz = imgUrl;
-		amountOfQuestions = questions;
-		amountOfLevels = levels;
+		amountOfQuestions = Number(questions);
+		amountOfLevels = Number(levels);
 
 		section.classList.add('Hide');
 		const secondSection = document.querySelector('.Second.Section');
@@ -205,10 +205,15 @@ function validSecondSection(section) {
 		}
 
 		if (titleResult && colorResult && answerResult) {
+			
 			question.answers = filterAnswerResult;
 			questions.push(question);
-
+			
+			alert(questions.length)
+			alert(amountOfQuestions)
+			alert(questions.length === amountOfQuestions)
 			if (questions.length === amountOfQuestions) {
+				alert('oi dnv')
 				questionsQuiz = questions;
 				section.classList.add('Hide');
 				const thirdSection = document.querySelector('.Third.Section');
