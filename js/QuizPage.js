@@ -63,14 +63,14 @@ function acessQuiz(quizId) {
                     quizQuestions[i].innerHTML += `
                     <li class="correct" onclick="tryAnswer(this)" data-identifier="answer">
                         <img src="${quizzAnswers[j].image}" alt="">
-                        <span><strong>${quizzAnswers[j].text}</strong></span>
+                        <p><strong>${quizzAnswers[j].text}</strong></p>
                     </li>
                     `;
                 } else {
                     quizQuestions[i].innerHTML += `
                     <li class="wrong" onclick="tryAnswer(this)" data-identifier="answer">
                         <img src="${quizzAnswers[j].image}" alt="">
-                        <span><strong>${quizzAnswers[j].text}</strong></span>
+                        <p><strong>${quizzAnswers[j].text}</strong></p>
                     </li>
                     `;
                 }

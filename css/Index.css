@@ -365,7 +365,6 @@ header h1 {
 .Question ul li {
     list-style: none;
     width: 33rem;
-    height: 23rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -377,7 +376,7 @@ header h1 {
     height: 175px;
 }
 
-.Question ul li span {
+.Question ul li p {
     max-width: 90%;
     height: 100%;
 }
@@ -514,7 +513,6 @@ header h1 {
     .Question ul li {
         list-style: none;
         width: 16.3rem;
-        height: 14rem;
         gap: .5rem;
     }
 
@@ -522,7 +520,7 @@ header h1 {
         width: 100%;
     }
 
-    .Question ul li span {
+    .Question ul li p {
         max-width: 90%;
     }
 
