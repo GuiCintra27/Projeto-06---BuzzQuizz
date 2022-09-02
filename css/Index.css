@@ -230,7 +230,6 @@ header h1 {
 .Quiz img {
     width: 34rem;
     height: 18rem;
-    
 }
 
 .Quiz span{
@@ -284,6 +283,8 @@ header h1 {
 /* CAPA E TÍTULO DO QUIZ */
 
 .Quiz_title {
+    position: relative;
+    overflow: hidden;
     width: 100%;
     height: 23rem;
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../images/Hogwarts.svg);
@@ -295,10 +296,23 @@ header h1 {
 }
 
 .Quiz_title h1 {
+    position: absolute;
     color: var(--white);
     font-size: 40px;
     font-weight: 400;
     max-width: 100rem;
+}
+
+.Quiz_title img{
+    width: 100%;
+}
+
+.Quiz_title span{
+    position: absolute;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    background:  linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
 }
 
 /* QUESTÕES DO QUIZ E RESULTADO*/
