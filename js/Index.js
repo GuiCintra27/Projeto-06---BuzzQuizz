@@ -33,16 +33,16 @@ axios
     const divs = quizzesData.map((quiz) => {
         return [`
         <div class="Quiz" onclick="acessQuiz(${quiz.id})">
+            <img src="${quiz.image}" alt="">
+            <span></span>
             <h4>${quiz.title}</h4>  
         </div>
-        `, quiz.image];
+        `];
     });
 
     let allQuizzes = document.querySelector('.Quiz_container');
 
     for(let i = 0; i < divs.length; i++) {
         allQuizzes.innerHTML += divs[i][0];
-        const lastDiv = allQuizzes.lastElementChild
-        lastDiv.style.background = `linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url('${divs[i][1]}')`
-    }
+}
 });
