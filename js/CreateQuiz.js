@@ -89,11 +89,11 @@ function secondSection() {
 	for (i = 0; i < amountOfQuestions; i++) {
 		if (i === 0) {
 			let firstQuestion = `            
-		<div class="Options Hide" data-form="${i + 1}" onclick="toggleForm(this)">
+		<div class="Options Hide" data-identifier="expand" data-form="${i + 1}" onclick="toggleForm(this)">
 			<h3>Pergunta 1</h3>
 			<img src="images/Pencil-icon.svg" alt="">
 		</div>
-		<form data-form="${i + 1}">
+		<form data-identifier="question-form" data-form="${i + 1}">
 
 			<h3 onclick="toggleForm(this.parentNode)">Pergunta 1</h3>
 			<input type="text" placeholder="Texto da pergunta" data-secondSection='pergunta ${i + 1}'>
@@ -123,11 +123,11 @@ function secondSection() {
 			form.innerHTML += firstQuestion;
 		} else {
 			let secondQuestion = `
-		<div class="Options" data-form="${i + 1}" onclick="toggleForm(this)">
+		<div class="Options" data-identifier="expand" data-form="${i + 1}" onclick="toggleForm(this)">
 			<h3>Pergunta ${i + 1}</h3>
 			<img src="images/Pencil-icon.svg" alt="">
 		</div>
-		<form class="Hide" data-form="${i + 1}">
+		<form class="Hide" data-identifier="question-form" data-form="${i + 1}">
 
 			<h3 onclick="toggleForm(this.parentNode)" >Pergunta ${i + 1}</h3>
 			<input type="text" placeholder="Texto da pergunta" data-secondSection='pergunta ${i + 1}'>
@@ -302,11 +302,11 @@ function thirdSection() {
 		if (i === 0) {
 			let firstQuestion = `            
 			<div>
-				<div data-third-form="${i + 1}" class="Options Hide" onclick="toggleThirdForm(this)">
+				<div data-identifier="expand" data-third-form="${i + 1}" class="Options Hide" onclick="toggleThirdForm(this)">
 					<h3>Nível ${i + 1}</h3>
 					<img src="images/Pencil-icon.svg" alt="">
 				</div>
-				<form data-third-form="${i + 1}">
+				<form data-identifier="level" data-third-form="${i + 1}">
 					<h3 onclick="toggleThirdForm(this.parentNode)">Nível ${i + 1}</h3>
 					<input type="text" placeholder="Título do nível" data-thirdSection="titulo ${i + 1}">
 					<input type="text" placeholder="% de acerto mínima" data-thirdSection="porcentagem ${i + 1}">
@@ -319,11 +319,11 @@ function thirdSection() {
 		} else {
 			let secondQuestion = `
 			<div">
-				<div data-third-form="${i + 1}" class="Options" onclick="toggleThirdForm(this)">
+				<div data-identifier="expand" data-third-form="${i + 1}" class="Options" onclick="toggleThirdForm(this)">
 					<h3>Nível ${i + 1}</h3>
 					<img src="images/Pencil-icon.svg" alt="">
 				</div>
-				<form data-third-form="${i + 1}" class="Hide">
+				<form data-identifier="level" data-third-form="${i + 1}" class="Hide">
 					<h3 onclick="toggleThirdForm(this.parentNode)">Nível ${i + 1}</h3>
 					<input type="text" placeholder="Título do nível" data-thirdSection="titulo ${i + 1}">
 					<input type="text" placeholder="% de acerto mínima" data-thirdSection="porcentagem ${i + 1}">
