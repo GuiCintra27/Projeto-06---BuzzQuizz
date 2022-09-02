@@ -210,7 +210,6 @@ function validSecondSection(section) {
 			questions.push(question);
 			
 			if (questions.length === amountOfQuestions) {
-				alert('oi dnv')
 				questionsQuiz = questions;
 				section.classList.add('Hide');
 				const thirdSection = document.querySelector('.Third.Section');
