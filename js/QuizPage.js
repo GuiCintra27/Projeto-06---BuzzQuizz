@@ -41,13 +41,16 @@ function acessQuiz(quizId) {
 
         quizPage.innerHTML = `
         <div class="Quiz_title">
+            <img src="" alt="">
             <h1>O quão Potterhead é você?</h1>
         </div>
         `
 
         const quizTitle = document.querySelector('.Quiz_title')
-        quizTitle.innerHTML = `<h1>${selectedQuiz.title}</h1>`
-        quizTitle.style.background = `linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${selectedQuiz.image})`
+        quizTitle.innerHTML = `
+        <img src="${selectedQuiz.image}" alt="">
+        <span></span>
+        <h1>${selectedQuiz.title}</h1>`
 
         const questions = selectedQuiz.questions
         questionsQtt = questions.length
