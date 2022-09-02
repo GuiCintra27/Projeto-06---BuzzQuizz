@@ -374,7 +374,6 @@ header h1 {
 .Question ul li span {
     max-width: 90%;
     height: 100%;
-    overflow-y: scroll;
 }
 
 .Result {
