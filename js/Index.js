@@ -9,6 +9,11 @@ function createQuiz() {
     firstSection.classList.remove('Hide');
 }
 
+let selectedQuiz;
+let quizzesData;
+
+const quizPage = document.querySelector('.Quiz_page');
+const homePage = document.querySelector('#Select-quiz');
 
 // Renderizar quizzes do usuário do localStorage
 function userQuizRender () {
@@ -41,36 +46,42 @@ function userQuizRender () {
         document.querySelector("#User_quiz").classList.remove("Hide");
         document.querySelector("#User_quiz_empty").classList.add("Hide");
     }
-}
+    
+    // Renderizando os quizzes gerais da API
 
-// Renderizando os quizzes gerais da API
-let selectedQuiz;
-let quizzesData;
+    axios
+    .get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes')
+    .then((quizzes) => {
+        quizzesData = quizzes.data;
+        console.log(quizzesData);
+        eliQuiz = quizzesData.filter((quiz) => {
+            for (let i = 0; i <= quizzesUserArray.length; i++) {
+                if (i === quizzesUserArray.length) {
+                 return true;
+                }
+                if (quizzesUserArray[i].id === quiz.id) {
+                 break;
+                } 
+             }
+        })
+        const divs = eliQuiz.map((quiz) => {
+            return [`
+            <div data-identifier="quizz-card" class="Quiz" onclick="acessQuiz(${quiz.id})">
+                <img src="${quiz.image}" alt="">
+                <span></span>
+                <h4>${quiz.title}</h4>  
+            </div>
+            `];
+        });
 
-const quizPage = document.querySelector('.Quiz_page');
-const homePage = document.querySelector('#Select-quiz');
+        let allQuizzes = document.querySelector('.Quiz_container');
 
-axios
-.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes')
-.then((quizzes) => {
-    quizzesData = quizzes.data;
-    const divs = quizzesData.map((quiz) => {
-        return [`
-        <div data-identifier="quizz-card" class="Quiz" onclick="acessQuiz(${quiz.id})">
-            <img src="${quiz.image}" alt="">
-            <span></span>
-            <h4>${quiz.title}</h4>  
-        </div>
-        `];
+        for(let i = 0; i < divs.length; i++) {
+            allQuizzes.innerHTML += divs[i][0];
+    }
     });
 
-    let allQuizzes = document.querySelector('.Quiz_container');
-
-    for(let i = 0; i < divs.length; i++) {
-        allQuizzes.innerHTML += divs[i][0];
 }
-});
-
 
 //<====================>
 userQuizRender()
