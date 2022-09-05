@@ -53,7 +53,6 @@ function userQuizRender () {
     .get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes')
     .then((quizzes) => {
         quizzesData = quizzes.data;
-        console.log(quizzesData);
         eliQuiz = quizzesData.filter((quiz) => {
             for (let i = 0; i <= quizzesUserArray.length; i++) {
                 if (i === quizzesUserArray.length) {
