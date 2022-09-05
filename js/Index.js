@@ -11,6 +11,7 @@ function createQuiz() {
 
 let selectedQuiz;
 let quizzesData;
+let eliQuiz;
 
 const quizPage = document.querySelector('.Quiz_page');
 const homePage = document.querySelector('#Select-quiz');
@@ -53,16 +54,20 @@ function userQuizRender () {
     .get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes')
     .then((quizzes) => {
         quizzesData = quizzes.data;
-        eliQuiz = quizzesData.filter((quiz) => {
-            for (let i = 0; i <= quizzesUserArray.length; i++) {
-                if (i === quizzesUserArray.length) {
-                 return true;
-                }
-                if (quizzesUserArray[i].id === quiz.id) {
-                 break;
-                } 
-             }
-        })
+        if (quizzesUserArray) {
+            eliQuiz = quizzesData.filter((quiz) => {
+                for (let i = 0; i <= quizzesUserArray.length; i++) {
+                    if (i === quizzesUserArray.length) {
+                     return true;
+                    }
+                    if (quizzesUserArray[i].id === quiz.id) {
+                     break;
+                    } 
+                 }
+            })
+        } else {
+            eliQuiz = quizzesData
+        }
         const divs = eliQuiz.map((quiz) => {
             return [`
             <div data-identifier="quizz-card" class="Quiz" onclick="acessQuiz(${quiz.id})">
